@@ -5,16 +5,18 @@ import Challenge from '../section/challenge.jsx/Challenge'
 import ExploreCard1 from '../components/cards/explorecard/ExploreCard1'
 import HealthCare from '../section/health/HealthCare'
 import YogaExplore from '../section/yoga/YogaExplore'
+import StressRelief from '../section/stressrelief/StressRelief'
 
 const Explore = () => {
   return (
     <Layout>
      <Picks/>
      <Challenge/>
-     <div>
-      <h1 className=' text-center text-2xl mt-4'>Exercise with Equipment</h1>
+     <div className='p-4 sm:mt-2 md:mt-4'>
+      <h1 className=' text-center text-2xl mt-4 sm:mb-2 md:mb-5  '>Exercise with Equipment</h1>
      <ExploreCard1/>
      </div>
+     <StressRelief/>
      <HealthCare/>
      <YogaExplore/>
     </Layout>
