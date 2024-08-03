@@ -4,3 +4,64 @@
 
 
 
+/* Add this to your global CSS or component-specific CSS */
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .overflow-x-auto {
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .gap-4 {
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .gap-4 {
+      gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .gap-4 {
+      gap: 2.5rem;
+    }
+  }
+  
+  .min-w-300px {
+    min-width: 300px;
+  }
+  
+  @media (min-width: 768px) {
+    .min-w-350px {
+      min-width: 350px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .min-w-400px {
+      min-width: 400px;
+    }
+  }
+  
+  /* Hide the scroll buttons on small screens */
+  @media (max-width: 1024px) {
+    .absolute.left-0, .absolute.right-0 {
+      display: none;
+    }
+  }
+  

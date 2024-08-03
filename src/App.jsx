@@ -7,14 +7,14 @@ import { ScrollTop } from './components/scrolltop/ScrollTop';
 
 const App = () => {
   return (
-    <>
+    <div className='.back__bg'>
     <ScrollTop/>
    <Routes>
    <Route path='/' element={<HomePage/>}/>
    <Route path='/explore' element={<Explore/>}/>
 
    </Routes>
-   </>
+   </div>
   )
 }
 
