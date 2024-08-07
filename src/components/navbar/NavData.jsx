@@ -2,10 +2,7 @@ import { Link} from "react-router-dom";
 import React from "react";
     // navList Data
 
-    const logout = () => {
-        localStorage.clear('users');
-        navigate("/login")
-    }
+
    export const navList = (
     
         <ul className="flex gap-5">
@@ -39,8 +36,10 @@ import React from "react";
 
 
             {/* logout */}
-          <li className=" cursor-pointer" onClick={logout}>
-                logout
+          <li className=" cursor-pointer" >
+              <Link to={'/logout'}>
+              Logout
+              </Link>
             </li>
 
             {/* Cart

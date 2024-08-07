@@ -1,18 +1,20 @@
-// redux/authSlice.js
+// redux/reducers/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { server } from '../../constants/config';
+import { toast } from 'react-toastify';
 
-// Async function for login
-export const loginUser = createAsyncThunk(
-  'auth/loginUser',
-  async ({ email, password }, { rejectWithValue }) => {
+export const signupUser = createAsyncThunk(
+  'auth/signupUser',
+  async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${server}/api/v1/users/login`, { email, password });
+      const response = await axios.post('http://localhost:8000/api/v1/users/register', userData);
+      toast.success('Signup successful');
       return response.data;
     } catch (error) {
-      console.log("Error in loginUser:", error);
-      return rejectWithValue(error.response.data);
+      // Extract and provide a detailed error message
+      const message = error.response?.data?.message || 'Signup failed';
+      toast.error(message);
+      return rejectWithValue(message);
     }
   }
 );
@@ -21,34 +23,26 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    token: null,
     loading: false,
     error: null,
   },
-  reducers: {
-    logout: (state) => {
-      state.user = null;
-      state.token = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
+      .addCase(signupUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload;
+        state.error = null;
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
-
-export const { logout } = authSlice.actions;
 
 export default authSlice.reducer;
