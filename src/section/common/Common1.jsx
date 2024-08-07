@@ -1,22 +1,8 @@
-// import React from 'react'
-// import SmallCard from '../../components/cards/smallcard/SmallCard'
-
-// const Common1 = () => {
-//   return (
-//     <>
-//     <SmallCard/>
-//     </>
-//   )
-// }
-
-// export default Common1
-
-import React from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-// import { yogdata } from '../yoga/YogaData'; // Adjust the import path as necessary
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
-import { useState, useEffect } from "react";
 import Button from "../../constants/Button";
+
 const data = [
   {
     name: "Mountain Pose",
@@ -60,17 +46,15 @@ const data = [
   },
 ];
 
-// import yogaData from '../path/to/yogaData.json';
-
 const Common1 = () => {
   const { level } = useParams();
   const [filteredData, setFilteredData] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const Data = data.filter((item) => item.level === level);
-    console.log(Data);
-    setFilteredData(Data);
+    const filtered = data.filter((item) => item.level === level);
+    console.log(filtered);
+    setFilteredData(filtered);
   }, [level]);
 
   return (
@@ -81,11 +65,9 @@ const Common1 = () => {
         ))
       ) : (
         <p>No data available for this level</p>
-      
-      )
-      
-      }
-      <Button data={data} />
+      )}
+      {/* Pass the filteredData array to the Button component */}
+      <Button data={filteredData} />
     </>
   );
 };
