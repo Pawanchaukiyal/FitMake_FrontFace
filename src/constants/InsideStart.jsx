@@ -1,17 +1,28 @@
-import React from 'react'
+import React from "react";
+import play from "../section/common/play.svg";
+import skip from "../section/common/skip.svg";
 
-const InsideStart = () => {
-  return (<>
-  <div>
-  <div className="">
-  <img className="w-8 h-8 bg-yellow-200 " src=''alt=''> data </img>
+const InsideStart = ({ img, instructions, name, onSkip }) => {
+  return (
+    <>
+      <div>
+        <div className="">
+          <img className="w-8 h-8 bg-yellow-200" src={img} alt=""></img>
+        </div>
+        <p>{name}</p>
+        <div className="border-2">
+          <p>{instructions}</p>
+        </div>
+        <img className="w-8 h-8 bg-yellow-200" src={play} alt=""></img>
+        <img
+          className="w-8 h-8 bg-yellow-200 cursor-pointer"
+          src={skip}
+          alt=""
+          onClick={onSkip}
+        ></img>
+      </div>
+    </>
+  );
+};
 
-  </div>
-  <div className="border-2"><P>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam nemo, aperiam quibusdam dolore sunt sit exercitationem, incidunt at ullam aspernatur dolorem omnis ab quo. Corporis sunt doloribus distinctio facilis, dicta quibusdam quidem at non ea suscipit explicabo vel tempore consequatur, repellat ducimus illum, similique laboriosam eum. Assumenda magni minus aperiam accusamus beatae! Nisi fugit recusandae reiciendis.</P> </div>
-  <div className="border-2 bg-red-200 flex   justify-center" ><p>play</p></div>
-
-</div>
-  </>  )
-}
-
-export default InsideStart
+export default InsideStart;

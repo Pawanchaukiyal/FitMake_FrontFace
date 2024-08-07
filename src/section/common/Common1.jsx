@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
 
@@ -49,7 +49,6 @@ const data = [
 const Common1 = () => {
   const { level } = useParams();
   const [filteredData, setFilteredData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const filtered = data.filter((item) => item.level === level);
@@ -66,7 +65,6 @@ const Common1 = () => {
       ) : (
         <p>No data available for this level</p>
       )}
-      {/* Pass the filteredData array to the Button component */}
       <Button data={filteredData} />
     </>
   );

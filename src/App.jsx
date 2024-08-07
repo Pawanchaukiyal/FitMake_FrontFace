@@ -23,7 +23,9 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/level/:level" element={<Common1 />} />
         {/* <Route path="/" element={<SmallCard />} /> */}
-        <Route path="/start/:level" element={<Start/>} />
+        {/* <Route path="/start/:level" element={<Start/>} /> */}
+        <Route path="/common/:level" element={<Common1 />} />
+        <Route path="/start" element={<Start />} />
       </Routes>
     </div>
   );
