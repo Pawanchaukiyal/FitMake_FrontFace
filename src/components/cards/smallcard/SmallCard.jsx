@@ -1,54 +1,26 @@
-// import React from "react";
-
-// const SmallCard = () => {
-//   return (
-//     <div>
-//       <div className="min-h-screen bg-gray-50 flex flex-col justify-center relative overflow-hidden sm:py-12">
-//         <div className="max-w-7xl mx-auto">
-//           <div className="relative group">
-//             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-//             <div className="relative px-7 py-6 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6">
-//               <img className="w-[40px] h-[40px] object-contain"
-//                 src="https://th.bing.com/th?id=OIP.M-4qYeO_AFbQscgCBdDvKwHaFj&w=288&h=216&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-//                 alt=""
-//               ></img>
-//               <div className="space-y-2">
-//                 <p className="text-slate-800">
-//                   Learn how to make a glowing gradient background!
-//                 </p>
-//                 {/* <a  className="block text-indigo-400 group-hover:text-slate-800 transition duration-200" target="_blank">Read Article →</a> */}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SmallCard;
-
 import React from "react";
 
 const SmallCard = ({ data }) => {
   return (
-    <div>
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center relative overflow-hidden sm:py-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative px-7 py-6 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6">
-              <img
-                className="w-[40px] h-[40px] object-contain"
-                src={data.img}
-                alt={data.heading}
-              />
-              <div className="space-y-2">
-                <p className="text-slate-800">{data.name}</p>
-                <p className="text-slate-600">{data.level}</p>
-              </div>
-            </div>
-          </div>
+    <div className="relative group bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg p-5 transition-transform transform hover:scale-105">
+      <div className="relative bg-white p-6 rounded-lg shadow-lg overflow-hidden flex  items-center">
+        {/* Popup effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-80 transition-opacity duration-500 rounded-lg"></div>
+
+        <div className="flex flex-col items-center space-y-2 mt-4 relative z-10 md:mr-8 ">
+          <img
+            className="w-[90px] h-[60px] object-cover border-2 border-purple-600"
+            src={data.img}
+            alt={data.name}
+          />
+        </div>
+        <div className="text-center mt-4 flex flex-col items-center justify-center space-y-2 relative z-10">
+          <p className="text-md md:text-2xl lg:text-3xl font-bold text-slate-800">
+            {data.name}
+          </p>
+          <p className="text-md md:text-xl lg:text-2xl text-slate-600 uppercase">
+            {data.level}
+          </p>
         </div>
       </div>
     </div>

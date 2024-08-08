@@ -29,17 +29,21 @@ const Common1 = () => {
   }, [level, aot]);
 
   return (
-    <>
-      {error && <p>{error}</p>} {/* Display error message if there's an error */}
+    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+      {error && <p className="text-red-500">{error}</p>} {/* Display error message if there's an error */}
       {filteredData.length > 0 ? (
-        filteredData.map((item, index) => (
-          <SmallCard key={index} data={item} name={item.name} img={item.yogaImage} />
-        ))
+        <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
+          {filteredData.map((item, index) => (
+            <SmallCard key={index} data={item} name={item.name} img={item.yogaImage} />
+          ))}
+        </div>
       ) : (
-        <p>No data available for this {level ? 'level' : 'aot'}</p>
+        <p className="text-center text-gray-500 mt-4">No data available for this {level ? 'level' : 'aot'}</p>
       )}
-      <Button data={filteredData} />
-    </>
+      <div className="mt-6 w-full flex justify-center">
+        <Button data={filteredData} />
+      </div>
+    </div>
   );
 };
 

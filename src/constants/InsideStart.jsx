@@ -4,7 +4,7 @@ import skip from "../section/common/skip.svg";
 
 const InsideStart = ({ img, instructions, name, onSkip }) => {
   return (
-    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 bg-white rounded-lg shadow-lg max-w-sm mx-auto">
+    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 bg-white w-screen h- bg-blue-400">
       <div className="w-34 h-34 md:w-32 md:h-32 bg-yellow-200  flex items-center justify-center mb-4">
         <img
           className="w-24 h-20 md:w-28 md:h-28 object-cover"

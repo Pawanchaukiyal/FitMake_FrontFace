@@ -37,14 +37,16 @@ const Start = () => {
   const currentExercise = data[currentIndex];
 
   return (
-    <div>
-      <p>Next exercise in: 10 seconds</p>
-      <InsideStart
+    <div className="bg-gray-200 w-full h-screen">
+      {/* <p>Next exercise in: 10 seconds</p> */}
+<div className="pt-32 ">
+<InsideStart
         img={currentExercise.yogaImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
         onSkip={handleSkip}
       />
+</div>
     </div>
   );
 };
