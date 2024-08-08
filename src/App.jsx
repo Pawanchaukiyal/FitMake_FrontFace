@@ -9,6 +9,7 @@ import Signup from "./components/signup/Signup";
 import Logout from "./components/login/Logout";
 import Common1 from "./section/common/Common1";
 import Start from "./constants/Start";
+import BodyFocus from "./section/bodyfocussection/BodyFocus";
 // import SmallCard from "./components/cards/smallcard/SmallCard";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         {/* <Route path="/start/:level" element={<Start/>} /> */}
         <Route path="/common/:level" element={<Common1 />} />
         <Route path="/start" element={<Start />} />
+        <Route path="/bodyfocus/:aot" element={<BodyFocus/>} />
       </Routes>
     </div>
   );
