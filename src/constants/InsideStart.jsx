@@ -8,7 +8,7 @@ const InsideStart = ({ img, instructions, name, onSkip }) => {
       <div className="w-34 h-34 md:w-32 md:h-32 bg-yellow-200  flex items-center justify-center mb-4">
         <img
           className="w-24 h-20 md:w-28 md:h-28 object-cover"
-          src="https://i.pinimg.com/originals/e0/d6/2e/e0d62e32eba3542552e83bdea5ff95e8.gif"
+          src={img}
           alt={name}
         />
       </div>

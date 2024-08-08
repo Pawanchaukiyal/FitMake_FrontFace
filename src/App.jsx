@@ -27,7 +27,7 @@ const App = () => {
         {/* <Route path="/start/:level" element={<Start/>} /> */}
         <Route path="/common/:level" element={<Common1 />} />
         <Route path="/start" element={<Start />} />
-        <Route path="/bodyfocus/:aot" element={<BodyFocus/>} />
+        <Route path="/aot/:aot" element={<Common1 />} />
       </Routes>
     </div>
   );

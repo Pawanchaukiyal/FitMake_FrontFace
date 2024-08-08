@@ -5,14 +5,15 @@ import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
 
 const Common1 = () => {
-  const { level } = useParams();
+  const { level, aot } = useParams(); // Extract both parameters
+  const type = level ? 'yoga' : 'exercises';
   const [filteredData, setFilteredData] = useState([]);
   const [error, setError] = useState(null); // Add error state
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/yoga/level/${level}`);
+        const response = await axios.get(`http://localhost:8000/api/v1/${type}/${level ? `level/${level}` : `aot/${aot}`}`);
         if (response.data && Array.isArray(response.data.data)) {
           setFilteredData(response.data.data); // Set data if it's an array
         } else {
@@ -25,7 +26,7 @@ const Common1 = () => {
     };
 
     fetchData();
-  }, [level]);
+  }, [level, aot]);
 
   return (
     <>
@@ -35,7 +36,7 @@ const Common1 = () => {
           <SmallCard key={index} data={item} name={item.name} img={item.yogaImage} />
         ))
       ) : (
-        <p>No data available for this level</p>
+        <p>No data available for this {level ? 'level' : 'aot'}</p>
       )}
       <Button data={filteredData} />
     </>
