@@ -4,7 +4,7 @@ import InsideStart from "./InsideStart";
 
 const Start = () => {
   const location = useLocation();
-  const { data } = location.state || {};
+  const { data } = location.state || {}; // Get data from location state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
 
@@ -40,7 +40,7 @@ const Start = () => {
     <div>
       <p>Next exercise in: 10 seconds</p>
       <InsideStart
-        img={currentExercise.img}
+        img={currentExercise.yogaImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
         onSkip={handleSkip}
