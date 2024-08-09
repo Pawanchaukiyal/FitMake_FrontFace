@@ -15,28 +15,32 @@ const Common2 = () => {
         let yogaUrl, exerciseUrl;
 
         if (value === "easy" || value === "medium" || value === "hard") {
-          // Only select this URL for easy, medium, or hard
           yogaUrl = `http://localhost:8000/api/v1/yoga/level/${value}`;
-          exerciseUrl = null; // Do not use exerciseUrl in this case
+          exerciseUrl = null; // No exerciseUrl for these cases
         } else {
-          // Select these two URLs for other values
           yogaUrl = `http://localhost:8000/api/v1/yoga/aot/${value}`;
           exerciseUrl = `http://localhost:8000/api/v1/exercises/aot/${value}`;
         }
 
+        console.log("Fetching Yoga URL:", yogaUrl);
+        console.log("Fetching Exercise URL:", exerciseUrl);
+
         // Fetch data from yoga URL
         const yogaResponse = await axios.get(yogaUrl);
+        console.log("Yoga Response:", yogaResponse.data);
         const yogaData = yogaResponse.data.data || [];
 
-        // Fetch data from exercise URL only if it's defined
         let exerciseData = [];
         if (exerciseUrl) {
+          console.log("Fetching Exercise Data");
           const exerciseResponse = await axios.get(exerciseUrl);
+          console.log("Exercise Response:", exerciseResponse.data);
           exerciseData = exerciseResponse.data.data || [];
         }
 
         // Combine data from both sources
         const combinedData = [...yogaData, ...exerciseData];
+        console.log("Combined Data:", combinedData);
         setCombinedData(combinedData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -53,7 +57,12 @@ const Common2 = () => {
       {combinedData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {combinedData.map((item, index) => (
-            <SmallCard key={index} data={item} name={item.name} img={item.yogaImage || item.exerciseImage} />
+            <SmallCard 
+              key={index} 
+              data={item} 
+              name={item.name} 
+              img={item.yogaImage || item.exerciseImage} 
+            />
           ))}
         </div>
       ) : (

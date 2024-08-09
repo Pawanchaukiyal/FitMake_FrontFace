@@ -16,19 +16,19 @@ const App = () => {
     <div className=".back__bg">
       <ScrollTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/level/:level" element={<Common1 />} />
-        {/* <Route path="/common/:level" element={<Common1 />} /> */}
-        <Route path="/start" element={<Start />} />
-        <Route path="/aot/:aot" element={<Common1 />} />
-        <Route path="/level/:level" element={<Common2 />} /> {/* Routes for level */}
-        <Route path="/aot/:aot" element={<Common2 />} /> {/* Routes for aot */}
-        
-      </Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/explore" element={<Explore />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/signup" element={<Signup />} />
+  <Route path="/logout" element={<Logout />} />
+  <Route path="/level/:level" element={<Common1 />} />
+  <Route path="/start" element={<Start />} />
+  <Route path="/aot/:aot" element={<Common1 />} />
+  <Route path="/combined/:value" element={<Common2 />} /> {/* For combined data */}
+  <Route path="/level/:value" element={<Common2 />} />
+<Route path="/aot/:value" element={<Common2 />} />
+
+</Routes>
     </div>
   );
 };
