@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Explore from "./pages/Explore";
@@ -10,7 +9,7 @@ import Logout from "./components/login/Logout";
 import Common1 from "./section/common/Common1";
 import Start from "./constants/Start";
 import BodyFocus from "./section/bodyfocussection/BodyFocus";
-// import SmallCard from "./components/cards/smallcard/SmallCard";
+import Common2 from "./section/common/Common2"; // Ensure this is imported
 
 const App = () => {
   return (
@@ -23,11 +22,9 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/level/:level" element={<Common1 />} />
-        {/* <Route path="/" element={<SmallCard />} /> */}
-        {/* <Route path="/start/:level" element={<Start/>} /> */}
         <Route path="/common/:level" element={<Common1 />} />
         <Route path="/start" element={<Start />} />
-        <Route path="/aot/:aot" element={<Common1 />} />
+        <Route path="/aot/:aot" element={<Common2 />} /> {/* Make sure this route matches the navigation path */}
       </Routes>
     </div>
   );
