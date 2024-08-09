@@ -5,28 +5,39 @@ import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
 
 const Common2 = () => {
-  const { aot } = useParams(); 
-  const [filteredData, setFilteredData] = useState([]);
+  const { value } = useParams();
+  const [combinedData, setCombinedData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Determine if the aot value is "easy", "medium", or "hard"
-        const isLevel = ["easy", "medium", "hard"].includes(aot);
-        const yogaEndpointSuffix = isLevel ? `level/${aot}` : `aot/${aot}`;
-        
-        // Fetch yoga and exercise data
-        const [yogaResponse, exerciseResponse] = await Promise.all([
-          axios.get(`http://localhost:8000/api/v1/yoga/${yogaEndpointSuffix}`),
-          axios.get(`http://localhost:8000/api/v1/exercise/aot/${aot}`)
-        ]);
+        let yogaUrl, exerciseUrl;
 
-        const yogaData = yogaResponse.data?.data || [];
-        const exerciseData = exerciseResponse.data?.data || [];
+        if (value === "easy" || value === "medium" || value === "hard") {
+          // Only select this URL for easy, medium, or hard
+          yogaUrl = `http://localhost:8000/api/v1/yoga/level/${value}`;
+          exerciseUrl = null; // Do not use exerciseUrl in this case
+        } else {
+          // Select these two URLs for other values
+          yogaUrl = `http://localhost:8000/api/v1/yoga/aot/${value}`;
+          exerciseUrl = `http://localhost:8000/api/v1/exercises/aot/${value}`;
+        }
 
-        // Combine both data sets into one array
-        setFilteredData([...yogaData, ...exerciseData]);
+        // Fetch data from yoga URL
+        const yogaResponse = await axios.get(yogaUrl);
+        const yogaData = yogaResponse.data.data || [];
+
+        // Fetch data from exercise URL only if it's defined
+        let exerciseData = [];
+        if (exerciseUrl) {
+          const exerciseResponse = await axios.get(exerciseUrl);
+          exerciseData = exerciseResponse.data.data || [];
+        }
+
+        // Combine data from both sources
+        const combinedData = [...yogaData, ...exerciseData];
+        setCombinedData(combinedData);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("Failed to fetch data");
@@ -34,22 +45,22 @@ const Common2 = () => {
     };
 
     fetchData();
-  }, [aot]);
+  }, [value]);
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
       {error && <p className="text-red-500">{error}</p>}
-      {filteredData.length > 0 ? (
+      {combinedData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
-          {filteredData.map((item, index) => (
+          {combinedData.map((item, index) => (
             <SmallCard key={index} data={item} name={item.name} img={item.yogaImage || item.exerciseImage} />
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-4">No data available for this {aot}</p>
+        <p className="text-center text-gray-500 mt-4">No data available for this {value}</p>
       )}
       <div className="mt-6 w-full flex justify-center">
-        <Button data={filteredData} />
+        <Button data={combinedData} />
       </div>
     </div>
   );

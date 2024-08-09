@@ -22,9 +22,12 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/level/:level" element={<Common1 />} />
-        <Route path="/common/:level" element={<Common1 />} />
+        {/* <Route path="/common/:level" element={<Common1 />} /> */}
         <Route path="/start" element={<Start />} />
-        <Route path="/aot/:aot" element={<Common2 />} /> {/* Make sure this route matches the navigation path */}
+        <Route path="/aot/:aot" element={<Common1 />} />
+        <Route path="/level/:level" element={<Common2 />} /> {/* Routes for level */}
+        <Route path="/aot/:aot" element={<Common2 />} /> {/* Routes for aot */}
+        
       </Routes>
     </div>
   );

@@ -14,11 +14,11 @@ export const PickData = [
       heading: "Strong Leg",
       value:"leg"
     },
-    {
-        imglink: "https://images.unsplash.com/photo-1722232581651-d87e4099561b",
-        heading: "Yoga with Kids",
-        vlaue:"easy"
-    },
+    // {
+    //     imglink: "https://images.unsplash.com/photo-1722232581651-d87e4099561b",
+    //     heading: "Yoga with Kids",
+    //     vlaue:"hard"
+    // },
     {
         imglink: "https://images.unsplash.com/photo-1722232581651-d87e4099561b",
         heading: "Yoga for flexibility",
