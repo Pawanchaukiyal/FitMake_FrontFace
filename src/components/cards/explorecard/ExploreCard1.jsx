@@ -4,7 +4,7 @@ const ExploreCard1 = () => {
   return (
     <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg min-w-[300px] md:min-w-[350px] lg:min-w-[400px]">
       <div className="mx-auto">
-        <img src="https://th.bing.com/th/id/OIP.bOdLpJTC7_9LuV7mhntY1QHaE7?w=219&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" className="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg object-cover" alt="img" />
+        <img src="https://i.etsystatic.com/19837560/r/il/378e3d/2260593265/il_fullxfull.2260593265_ed9x.jpg" className="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg object-cover" alt="img" />
         <div className="divide-y divide-gray-300/50 mt-4">
           <div className="space-y-4 text-base leading-7 text-gray-600">
             <h1 className='text-2xl font-bold text-center text-purple-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ex explicabo corrupti?</h1>

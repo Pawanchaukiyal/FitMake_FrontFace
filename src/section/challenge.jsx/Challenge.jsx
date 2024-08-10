@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import View from '../../material/View';
-import ExploreCard1C from '../../components/cards/explorecard/ExploreCard1C';
+import { ChallengeData } from './ChallengeData';
+import ExploreCard2C from '../../components/cards/explorecard/ExploreCard2C';
 
 
 const Challenge = () => {
@@ -31,16 +32,18 @@ const Challenge = () => {
             className='flex gap-2 sm:gap-16 overflow-x-auto px-4' 
             ref={scrollContainerRef}
           >
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
+             {
+            ChallengeData.map((item,index)=>{
+              return(
+                <ExploreCard2C 
+                key={index}
+                heading={item.heading}
+                imglink={item.imglink}
+                value={item.value}
+                />
+              )
+            })
+           }
           </div>
           <button 
             className="absolute opacity-[0.6] right-0 w-16 h-16 bg-gray-800 text-white p-2 rounded-full z-10" 

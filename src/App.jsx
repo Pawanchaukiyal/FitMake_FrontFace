@@ -10,6 +10,7 @@ import Common1 from "./section/common/Common1";
 import Start from "./constants/Start";
 import BodyFocus from "./section/bodyfocussection/BodyFocus";
 import Common2 from "./section/common/Common2"; // Ensure this is imported
+import Common3 from "./section/common/Common3";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
   <Route path="/combined/:value" element={<Common2 />} /> {/* For combined data */}
   <Route path="/level/:value" element={<Common2 />} />
 <Route path="/aot/:value" element={<Common2 />} />
+<Route path="/aot/:value" element={<Common3 />} />
 
 </Routes>
     </div>

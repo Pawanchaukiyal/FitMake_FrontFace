@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ExploreCard1C from '../../components/cards/explorecard/ExploreCard1C';
 import View from '../../material/View';
+import { ReliefData } from './ReliefData';
 
 const StressRelief = () => {
   const scrollContainerRef = useRef(null);
@@ -29,16 +30,18 @@ const StressRelief = () => {
             className='flex gap-2 sm:gap-16 overflow-x-auto px-4' 
             ref={scrollContainerRef}
           >
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
-            <ExploreCard1C img_link={"https://plus.unsplash.com/premium_photo-1721276303391-ee0af231d021"} text={"Kuch to hai"} />
+            {
+            ReliefData.map((item,index)=>{
+              return(
+                <ExploreCard1C 
+                key={index}
+                heading={item.heading}
+                imglink={item.imglink}
+                value={item.value}
+                />
+              )
+            })
+           }
           </div>
           <button 
             className="absolute opacity-[0.6] right-0 w-16 h-16 bg-gray-800 text-white p-2 rounded-full z-10" 

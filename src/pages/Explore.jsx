@@ -18,7 +18,7 @@ const Explore = () => {
      </div>
      <StressRelief/>
      <HealthCare/>
-     <YogaExplore/>
+     {/* <YogaExplore/> */}
     </Layout>
   )
 }

@@ -22,25 +22,19 @@ const Common2 = () => {
           exerciseUrl = `http://localhost:8000/api/v1/exercises/aot/${value}`;
         }
 
-        console.log("Fetching Yoga URL:", yogaUrl);
-        console.log("Fetching Exercise URL:", exerciseUrl);
-
         // Fetch data from yoga URL
         const yogaResponse = await axios.get(yogaUrl);
-        console.log("Yoga Response:", yogaResponse.data);
         const yogaData = yogaResponse.data.data || [];
 
         let exerciseData = [];
         if (exerciseUrl) {
-          console.log("Fetching Exercise Data");
+          // Fetch data from exercise URL
           const exerciseResponse = await axios.get(exerciseUrl);
-          console.log("Exercise Response:", exerciseResponse.data);
           exerciseData = exerciseResponse.data.data || [];
         }
 
         // Combine data from both sources
         const combinedData = [...yogaData, ...exerciseData];
-        console.log("Combined Data:", combinedData);
         setCombinedData(combinedData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -57,11 +51,11 @@ const Common2 = () => {
       {combinedData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {combinedData.map((item, index) => (
-            <SmallCard 
-              key={index} 
-              data={item} 
-              name={item.name} 
-              img={item.yogaImage || item.exerciseImage} 
+            <SmallCard
+              key={index}
+              data={item}
+              name={item.name}
+              img={item.yogaImage || item.exerciseImage}
             />
           ))}
         </div>
