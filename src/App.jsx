@@ -22,7 +22,9 @@ const App = () => {
   <Route path="/login" element={<Login />} />
   <Route path="/signup" element={<Signup />} />
   <Route path="/logout" element={<Logout />} />
-  <Route path="/level/:level" element={<Common1 />} />
+  {/* Route path for yoga on the based of level */}
+  <Route path="/level/:level" element={<Common1 />} /> 
+  
   <Route path="/start" element={<Start />} />
   <Route path="/aot/:aot" element={<Common1 />} />
   <Route path="/combined/:value" element={<Common2 />} /> {/* For combined data */}

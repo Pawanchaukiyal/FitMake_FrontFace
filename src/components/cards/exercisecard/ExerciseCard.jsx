@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ExerciseCard = ({ img_link, heading, text }) => {
+const ExerciseCard = ({ imglink, heading, text }) => {
   return (
     <>
       <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg">
         <div className="mx-auto">
-          <img src={img_link} className="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg object-cover" alt="img" />
+          <img src={imglink} className="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg object-cover" alt="img" />
           <div className="divide-y divide-gray-300/50 mt-4">
             <div className="space-y-4 text-base leading-7 text-gray-600">
               <h1 className='text-2xl font-bold text-center text-purple-600'>{heading}</h1>
