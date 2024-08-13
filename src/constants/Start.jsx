@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import InsideStart from "./InsideStart";
 
@@ -8,21 +8,11 @@ const Start = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
 
-  useEffect(() => {
-    if (data && data.length > 0 && !completed) {
-      const timer = setInterval(() => {
-        handleSkip();
-      }, 30000); // 10 seconds
-
-      return () => clearInterval(timer);
-    }
-  }, [data, completed]);
-
   const handleSkip = () => {
-    if (currentIndex + 1 >= data.length) {
-      setCompleted(true);
-    } else {
+    if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setCompleted(true); // Mark as completed
     }
   };
 
@@ -38,19 +28,13 @@ const Start = () => {
 
   return (
     <div className="bg-gray-200 w-full h-screen">
-      {/* <p>Next exercise in: 10 seconds</p> */}
-      <div className=" ">
-        {/* <InsideStart
-        img={currentExercise.yogaImage}
-        name={currentExercise.name}
-        instructions={currentExercise.instructions}
-        onSkip={handleSkip} */}
+      <div>
         <InsideStart
           img={currentExercise.yogaImage}
           name={currentExercise.name}
           instructions={currentExercise.instructions}
           duration={10} // Duration in seconds
-          onSkip={() => console.log("Exercise skipped")}
+          onSkip={handleSkip} // Automatically handle skip
         />
       </div>
     </div>

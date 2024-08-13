@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from "react";
 import play from "../section/common/play.svg";
 import skip from "../section/common/skip.svg";
+import pause from "../section/common/pause.svg";
 
 const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
-  const [timeLeft, setTimeLeft] = useState(duration); // Time left in seconds
-  const [progress, setProgress] = useState(0); // Progress for slider
-  const [isPlaying, setIsPlaying] = useState(false); // Control play/pause
+  const [timeLeft, setTimeLeft] = useState(duration);
+  const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true); // Start playing by default
 
   useEffect(() => {
     let timer;
     let progressInterval;
 
     if (isPlaying && timeLeft > 0) {
+      // Timer to count down seconds
       timer = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
 
+      // Interval to update progress bar
       progressInterval = setInterval(() => {
         setProgress((prevProgress) => prevProgress + (100 / duration));
       }, 1000);
     } else if (timeLeft === 0) {
       clearInterval(timer);
       clearInterval(progressInterval);
-      setIsPlaying(false); // Stop the timer and progress when it reaches 0
+      onSkip(); // Automatically skip to the next exercise when time ends
     }
 
     return () => {
       clearInterval(timer);
       clearInterval(progressInterval);
     };
-  }, [isPlaying, timeLeft, duration]);
+  }, [isPlaying, timeLeft, duration, onSkip]);
 
   useEffect(() => {
     // Reset timeLeft and progress when a new exercise starts
@@ -41,13 +44,6 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleSkip = () => {
-    setTimeLeft(0); // Immediately end the exercise
-    setProgress(100); // Set progress to 100%
-    setIsPlaying(false); // Stop the exercise
-    onSkip(); // Call the skip handler
-  };
-
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen bg-blue-400">
       {/* Image Container */}
@@ -55,7 +51,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
         <img className="w-24 h-20 object-contain" src={img} alt={name} />
       </div>
       
-      {/* Name of the Yoga Pose */}
+      {/* Name of the Exercise */}
       <p className="text-lg font-semibold mb-2 text-center">{name}</p>
       
       {/* Instructions Container */}
@@ -74,15 +70,15 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
       <div className="flex space-x-4">
         <img
           className="w-8 h-8 md:w-10 md:h-10 bg-yellow-200 p-2 rounded-full cursor-pointer"
-          src={play}
-          alt="Play"
+          src={isPlaying ? pause : play}
+          alt="Play/Pause"
           onClick={handlePlayPause}
         />
         <img
           className="w-8 h-8 md:w-10 md:h-10 bg-yellow-200 p-2 rounded-full cursor-pointer"
           src={skip}
           alt="Skip"
-          onClick={handleSkip}
+          onClick={onSkip} // Trigger onSkip directly
         />
       </div>
       
