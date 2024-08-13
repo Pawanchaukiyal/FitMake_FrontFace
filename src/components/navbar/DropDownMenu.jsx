@@ -70,23 +70,23 @@ const OtherMenu = () => {
   };
 
   return (
-    <div className="w-64 bg-white p-6 shadow-xl">
-      <div className="mb-3 space-y-3">
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
+    <div className="w-64 bg-white p-6 shadow-xl ">
+      <div className="mb-3 space-y-3 ">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
           Blog
         </Link>
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
           Report
         </Link>
       </div>
       <div className="mb-6 space-y-3">
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
           Cart
         </Link>
-        <Link to={'/share'} className="block text-sm hover:underline">
+        <Link to={'/share'} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
           Share With Friends
         </Link>
-        <Link to={'/feedback'} className="block text-sm hover:underline">
+        <Link to={'/feedback'} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
           Feedback
         </Link>
       </div>

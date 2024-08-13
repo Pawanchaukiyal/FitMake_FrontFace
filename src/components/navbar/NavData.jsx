@@ -5,7 +5,7 @@ import React from "react";
 
    export const navList = (
     
-        <ul className="flex gap-5">
+        <ul className="flex gap-5 font-medium">
             {/* Home */}
             <li>
                 <Link to={'/'}>Home</Link>

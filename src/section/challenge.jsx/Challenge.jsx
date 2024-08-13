@@ -18,7 +18,7 @@ const Challenge = () => {
   return (
     <>
       <div className=' p-4 sm:mt-2 md:mt-4'>
-        <h1 className='text-center text-2xl mt-4'>Challenges For You</h1>
+        <h1 className='text-center text-2xl mt-4 font-bold'>Challenges For You</h1>
         <View />
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 

@@ -17,7 +17,7 @@ const Picks = () => {
   return (
     <>
       <div className='mt-4 p-4'>
-        <h1 className='text-center text-2xl mt-4'>Suggestion For You</h1>
+        <h1 className='text-center text-2xl mt-4 font-bold'>Suggestion For You</h1>
         <View/>
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 

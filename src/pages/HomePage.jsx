@@ -16,7 +16,7 @@ const HomePage = () => {
       <Exercise />
       <BodyFocus />
       <span
-        className="block rounded-xl m-4 bg-yellow-400 text-center p-4 font-serif mb-4 font-bold text-4xl cursor-pointer "
+        className="block rounded-xl m-4 bg-[#212432] text-white text-center p-4 font-serif mb-4 font-bold text-2xl cursor-pointer "
         onClick={() => navigate("/explore")}
       >
         Click Here To Discover More

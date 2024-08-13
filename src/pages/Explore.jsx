@@ -14,7 +14,7 @@ const Explore = () => {
      <Picks/>
      <Challenge/>
      <div className='p-4 sm:mt-2 md:mt-4'>
-      <h1 className=' text-center text-2xl mt-4 sm:mb-2 md:mb-5  '>Exercise with Equipment</h1>
+      <h1 className=' text-center text-2xl mt-4 sm:mb-2 md:mb-5 font-bold '>Exercise with Equipment</h1>
      <EquipmentCard/>
      </div>
      <StressRelief/>
