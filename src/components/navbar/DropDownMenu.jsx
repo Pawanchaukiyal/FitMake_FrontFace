@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DropDownMenu = () => {
   return (
@@ -55,18 +57,30 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
 };
 
 const OtherMenu = () => {
+  const handleClick = () => {
+    toast.info('This feature is coming soon shortly', {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
-    <div className="w-64 bg-white p-6 shadow-xl ">
-      <div className="mb-3 space-y-3 ">
-        <Link to={'/blog'} className="block text-sm hover:underline">
+    <div className="w-64 bg-white p-6 shadow-xl">
+      <div className="mb-3 space-y-3">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
           Blog
         </Link>
-        <Link to={'/report'} className="block text-sm hover:underline">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
           Report
         </Link>
       </div>
       <div className="mb-6 space-y-3">
-        <Link to={'/cart'} className="block text-sm hover:underline">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline">
           Cart
         </Link>
         <Link to={'/share'} className="block text-sm hover:underline">
@@ -77,7 +91,7 @@ const OtherMenu = () => {
         </Link>
       </div>
     </div>
-  )
+  );
 }
 
 export default DropDownMenu;
