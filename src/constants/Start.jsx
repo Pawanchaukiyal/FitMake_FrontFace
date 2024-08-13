@@ -39,14 +39,20 @@ const Start = () => {
   return (
     <div className="bg-gray-200 w-full h-screen">
       {/* <p>Next exercise in: 10 seconds</p> */}
-<div className=" ">
-<InsideStart
+      <div className=" ">
+        {/* <InsideStart
         img={currentExercise.yogaImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
-        onSkip={handleSkip}
-      />
-</div>
+        onSkip={handleSkip} */}
+        <InsideStart
+          img={currentExercise.yogaImage}
+          name={currentExercise.name}
+          instructions={currentExercise.instructions}
+          duration={10} // Duration in seconds
+          onSkip={() => console.log("Exercise skipped")}
+        />
+      </div>
     </div>
   );
 };
