@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import View from '../../material/View';
-import ExploreCard1C from '../../components/cards/explorecard/ExploreCard1C';
-import { HealthData } from './HealthData';
+import ExploreCard1C from '../../../components/cards/explorecard/ExploreCard1C';
+import View from '../../../material/View';
+import { PickData } from './PickData';
 
-const HealthCare = () => {
+const Picks = () => {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -16,8 +16,8 @@ const HealthCare = () => {
 
   return (
     <>
-      <div className='p-4 sm:mt-2 md:mt-4 '>
-        <h1 className='text-center text-2xl mt-4'>HealtCare</h1>
+      <div className='mt-4 p-4'>
+        <h1 className='text-center text-2xl mt-4'>Suggestion For You</h1>
         <View/>
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 
@@ -31,7 +31,7 @@ const HealthCare = () => {
             ref={scrollContainerRef}
           >
            {
-            HealthData.map((item,index)=>{
+            PickData.map((item,index)=>{
               return(
                 <ExploreCard1C 
                 key={index}
@@ -55,4 +55,4 @@ const HealthCare = () => {
   );
 };
 
-export default HealthCare;
+export default Picks;

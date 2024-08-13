@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ExploreCard2C = ({ imglink, heading, value }) => {
+const ExploreCard1C = ({ imglink, heading, value }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-      navigate(`/combined/aot/${value}`);
+      navigate(`/exerciseaot/${value}`);
   };
 
   return (
@@ -29,4 +29,4 @@ const ExploreCard2C = ({ imglink, heading, value }) => {
   );
 };
 
-export default ExploreCard2C;
+export default ExploreCard1C;

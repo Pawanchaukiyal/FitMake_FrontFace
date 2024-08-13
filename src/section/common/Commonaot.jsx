@@ -1,9 +1,11 @@
+// Here fetch the all the given aot from yoga and exercise
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
 
-const Common3 = () => {
+const Commonaot = () => {
   const { value } = useParams();
   const [combinedData, setCombinedData] = useState([]);
   const [error, setError] = useState(null);
@@ -38,4 +40,4 @@ const Common3 = () => {
   );
 };
 
-export default Common3;
+export default Commonaot;

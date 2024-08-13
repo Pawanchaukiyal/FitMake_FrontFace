@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ExerciseCard = ({ imglink, heading, text }) => {
+const ExerciseCard = ({ imglink, heading, text,exerciselevel }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg">
@@ -11,9 +13,12 @@ const ExerciseCard = ({ imglink, heading, text }) => {
               <h1 className='text-2xl font-bold text-center text-purple-600'>{heading}</h1>
             </div>
             <div className="pt-4 text-base flex justify-center">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 border border-blue-700 rounded w-full">
-                {text}
-              </button>
+            <button
+              onClick={() => navigate(`/level/${exerciselevel}`)}
+              className="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 border border-blue-700 rounded w-full"
+            >
+              {text}
+            </button>
             </div>
           </div>
         </div>

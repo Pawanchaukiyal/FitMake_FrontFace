@@ -1,10 +1,13 @@
+
+//  This common pick get data from combine exercise aot && yoga aot and yogalevel
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
 
-const Common2 = () => {
+const CommonPick = () => {
   const { value } = useParams();
   const [combinedData, setCombinedData] = useState([]);
   const [error, setError] = useState(null);
@@ -12,26 +15,16 @@ const Common2 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let yogaUrl, exerciseUrl;
+        let yogaUrl = `http://localhost:8000/api/v1/yoga/yogaaot/${value}`;
+        let exerciseUrl = `http://localhost:8000/api/v1/exercises/exerciseaot/${value}`;
 
-        if (value === "easy" || value === "medium" || value === "hard") {
-          yogaUrl = `http://localhost:8000/api/v1/yoga/level/${value}`;
-          exerciseUrl = null; // No exerciseUrl for these cases
-        } else {
-          yogaUrl = `http://localhost:8000/api/v1/yoga/aot/${value}`;
-          exerciseUrl = `http://localhost:8000/api/v1/exercises/aot/${value}`;
-        }
-
-        // Fetch data from yoga URL
+        // Fetch yoga data
         const yogaResponse = await axios.get(yogaUrl);
         const yogaData = yogaResponse.data.data || [];
 
-        let exerciseData = [];
-        if (exerciseUrl) {
-          // Fetch data from exercise URL
-          const exerciseResponse = await axios.get(exerciseUrl);
-          exerciseData = exerciseResponse.data.data || [];
-        }
+        // Fetch exercise data
+        const exerciseResponse = await axios.get(exerciseUrl);
+        const exerciseData = exerciseResponse.data.data || [];
 
         // Combine data from both sources
         const combinedData = [...yogaData, ...exerciseData];
@@ -69,4 +62,4 @@ const Common2 = () => {
   );
 };
 
-export default Common2;
+export default CommonPick;

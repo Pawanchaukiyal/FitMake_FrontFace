@@ -5,7 +5,7 @@ const BodyFocusCard = ({ imglink, text }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/aot/${text.toLowerCase()}`); // Assuming your route structure matches this
+    navigate(`/exerciseaot/${text.toLowerCase()}`); // Assuming your route structure matches this
   };
   return (
     <div 

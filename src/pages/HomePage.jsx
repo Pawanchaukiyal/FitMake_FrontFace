@@ -1,9 +1,9 @@
 import React from 'react'
 import Carousel from '../components/carousel/Carousel'
-import Yoga from '../section/yoga/Yoga'
-import Exercise from '../section/exercise/Exercise'
-import BodyFocus from '../section/bodyfocussection/BodyFocus'
 import Layout from '../components/layout/Layout'
+import Yoga from '../section/HomeSection/yoga/Yoga'
+import Exercise from '../section/HomeSection/exercise/Exercise'
+import BodyFocus from '../section/HomeSection/bodyfocussection/BodyFocus'
 
 
 

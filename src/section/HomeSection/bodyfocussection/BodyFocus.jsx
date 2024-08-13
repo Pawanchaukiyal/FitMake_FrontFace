@@ -1,6 +1,6 @@
 import React from 'react';
-import BodyFocusCard from '../../components/cards/bodyfocuscard/BodyFocusCard';
 import { bodyfocusdata } from './bodyfocusdata';
+import BodyFocusCard from '../../../components/cards/bodyfocuscard/BodyFocusCard';
 
 const BodyFocus = () => {
   return (

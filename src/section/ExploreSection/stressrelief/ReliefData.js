@@ -7,7 +7,7 @@ export const ReliefData = [
     {
       imglink: "https://i.pinimg.com/originals/f4/7a/81/f47a8110633d1182468af3c825b2bef2.jpg",
       heading: "Improve shoulder",
-      value: ["neck","shoulder"]
+      value: ["neck"]
     },
     {
       imglink: "https://th.bing.com/th/id/OIP._Mn2UwzmWgzhYeogFnr42wHaHa?w=166&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",

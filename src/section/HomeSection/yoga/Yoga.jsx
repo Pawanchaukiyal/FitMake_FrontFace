@@ -1,10 +1,8 @@
 import React from "react";
-import YogaCard from "../../components/cards/yogacard1/YogaCard";
 import { yogdata } from "../yoga/YogaData";
-import { useNavigate } from "react-router-dom";
+import Card1 from "../../../components/cards/Card1";
 
 const Yoga = () => {
-  const navigate = useNavigate();
   return (
     <>
       <h1 className="text-center font-bold text-2xl mt-4">
@@ -13,12 +11,13 @@ const Yoga = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-5">
         {yogdata.map((item, index) => {
           return (
-            <YogaCard
+            <Card1
               key={index}
               heading={item.heading}
               imglink={item.imglink}
-              level={item.level}
+              value={item.level}
               text={item.text}
+              description={item.description}
             />
           );
         })}

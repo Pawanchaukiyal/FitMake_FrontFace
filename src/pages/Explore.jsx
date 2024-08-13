@@ -1,12 +1,13 @@
 import React from 'react'
 import Layout from '../components/layout/Layout'
-import Picks from '../section/picks/Picks'
 import Challenge from '../section/challenge.jsx/Challenge'
-import ExploreCard1 from '../components/cards/explorecard/ExploreCard1'
-import HealthCare from '../section/health/HealthCare'
-import YogaExplore from '../section/yoga/YogaExplore'
-import StressRelief from '../section/stressrelief/StressRelief'
 
+
+// import YogaExplore from '../section/yoga/YogaExplore'
+import Picks from '../section/ExploreSection/picks/Picks'
+import StressRelief from '../section/ExploreSection/stressrelief/StressRelief'
+import HealthCare from '../section/ExploreSection/health/HealthCare'
+import EquipmentCard from '../components/cards/explorecard/EquipmentCard'
 const Explore = () => {
   return (
     <Layout>
@@ -14,7 +15,7 @@ const Explore = () => {
      <Challenge/>
      <div className='p-4 sm:mt-2 md:mt-4'>
       <h1 className=' text-center text-2xl mt-4 sm:mb-2 md:mb-5  '>Exercise with Equipment</h1>
-     <ExploreCard1/>
+     <EquipmentCard/>
      </div>
      <StressRelief/>
      <HealthCare/>

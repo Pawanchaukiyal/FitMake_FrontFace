@@ -1,3 +1,6 @@
+// ja raha hai 
+// This card1c take data of yoga level and exercise aot.
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,9 +9,10 @@ const ExploreCard1C = ({ imglink, heading, value }) => {
 
   const handleClick = () => {
     if (value === "easy" || value === "medium" || value === "hard") {
-      navigate(`/level/${value}`);
+      navigate(`/yogalevel/${value}`);
     } else {
-      navigate(`/aot/${value}`);
+      // Navigate to a combined route to fetch both yogaaot and exerciseaot data
+      navigate(`/combined/${value}`);
     }
   };
 

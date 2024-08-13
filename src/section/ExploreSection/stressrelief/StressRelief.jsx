@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
-import ExploreCard1C from '../../components/cards/explorecard/ExploreCard1C';
-import View from '../../material/View';
-import { PickData } from './PickData';
+// import ExploreCard1C from '../../../components/cards/explorecard/ExploreCard1C';
+import View from '../../../material/View';
+import { ReliefData } from './ReliefData';
+import Card1 from '../../../components/cards/Card1';
 
-const Picks = () => {
+const StressRelief = () => {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -16,8 +17,8 @@ const Picks = () => {
 
   return (
     <>
-      <div className='mt-4 p-4'>
-        <h1 className='text-center text-2xl mt-4'>Suggestion For You</h1>
+      <div className='p-4 sm:mt-2 md:mt-4 '>
+        <h1 className='text-center text-2xl '>Stress Relief Execise</h1>
         <View/>
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 
@@ -30,14 +31,15 @@ const Picks = () => {
             className='flex gap-2 sm:gap-16 overflow-x-auto px-4' 
             ref={scrollContainerRef}
           >
-           {
-            PickData.map((item,index)=>{
+            {
+            ReliefData.map((item,index)=>{
               return(
-                <ExploreCard1C 
+                <Card1 
                 key={index}
                 heading={item.heading}
                 imglink={item.imglink}
                 value={item.value}
+                text={"Click it.."}
                 />
               )
             })
@@ -55,4 +57,4 @@ const Picks = () => {
   );
 };
 
-export default Picks;
+export default StressRelief;

@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
-import ExploreCard1C from '../../components/cards/explorecard/ExploreCard1C';
-import View from '../../material/View';
-import { ReliefData } from './ReliefData';
+import View from '../../../material/View';
+// import ExploreCard1C from '../../../components/cards/explorecard/ExploreCard1C';
+import { HealthData } from './HealthData';
+import Card1 from '../../../components/cards/Card1';
 
-const StressRelief = () => {
+const HealthCare = () => {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -17,7 +18,7 @@ const StressRelief = () => {
   return (
     <>
       <div className='p-4 sm:mt-2 md:mt-4 '>
-        <h1 className='text-center text-2xl '>Stress Relief Execise</h1>
+        <h1 className='text-center text-2xl mt-4'>HealtCare</h1>
         <View/>
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 
@@ -30,14 +31,15 @@ const StressRelief = () => {
             className='flex gap-2 sm:gap-16 overflow-x-auto px-4' 
             ref={scrollContainerRef}
           >
-            {
-            ReliefData.map((item,index)=>{
+           {
+            HealthData.map((item,index)=>{
               return(
-                <ExploreCard1C 
+                <Card1
                 key={index}
                 heading={item.heading}
                 imglink={item.imglink}
                 value={item.value}
+                text={"Click it.."}
                 />
               )
             })
@@ -55,4 +57,4 @@ const StressRelief = () => {
   );
 };
 
-export default StressRelief;
+export default HealthCare;

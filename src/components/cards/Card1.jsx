@@ -1,8 +1,19 @@
+// This card1 takes the value from yoga and exercises on the base of level.
+// Redirect common 
+// value receive from yoga and exercise.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const YogaCard = ({ imglink, heading, text,level }) => {
+const Card1 = ({ imglink, heading, text, value, exerciselevel, description }) => {
   const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    if (exerciselevel) {
+      navigate(`/exerciselevel/${exerciselevel}`);
+    } else {
+      navigate(`yogalevel/${value}`);
+    }
+  };
 
   return (
     <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg">
@@ -20,7 +31,7 @@ const YogaCard = ({ imglink, heading, text,level }) => {
           </div>
           <div className="pt-4 text-base flex justify-center">
             <button
-              onClick={() => navigate(`/level/${level}`)}
+              onClick={handleNavigation}
               className="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 border border-blue-700 rounded w-full"
             >
               {text}
@@ -32,4 +43,4 @@ const YogaCard = ({ imglink, heading, text,level }) => {
   );
 };
 
-export default YogaCard;
+export default Card1;
