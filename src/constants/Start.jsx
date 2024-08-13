@@ -12,7 +12,7 @@ const Start = () => {
     if (data && data.length > 0 && !completed) {
       const timer = setInterval(() => {
         handleSkip();
-      }, 10000); // 10 seconds
+      }, 30000); // 10 seconds
 
       return () => clearInterval(timer);
     }
@@ -39,7 +39,7 @@ const Start = () => {
   return (
     <div className="bg-gray-200 w-full h-screen">
       {/* <p>Next exercise in: 10 seconds</p> */}
-<div className="pt-32 ">
+<div className=" ">
 <InsideStart
         img={currentExercise.yogaImage}
         name={currentExercise.name}
