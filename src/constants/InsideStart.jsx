@@ -12,36 +12,76 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     let timer;
     let progressInterval;
 
-    if (isPlaying && timeLeft > 0) {
+    if (isPlaying) {
       // Timer to count down seconds
       timer = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timer);
+            clearInterval(progressInterval);
+            handleSkipInternal(); // Automatically skip to the next exercise when time ends
+            return 0;
+          }
+          return prevTime - 1;
+        });
       }, 1000);
 
       // Interval to update progress bar
       progressInterval = setInterval(() => {
-        setProgress((prevProgress) => prevProgress + (100 / duration));
+        setProgress((prevProgress) => prevProgress + 100 / duration);
       }, 1000);
-    } else if (timeLeft === 0) {
-      clearInterval(timer);
-      clearInterval(progressInterval);
-      onSkip(); // Automatically skip to the next exercise when time ends
     }
 
     return () => {
       clearInterval(timer);
       clearInterval(progressInterval);
     };
-  }, [isPlaying, timeLeft, duration, onSkip]);
+  }, [isPlaying, duration]);
 
   useEffect(() => {
     // Reset timeLeft and progress when a new exercise starts
     setTimeLeft(duration);
     setProgress(0);
-  }, [duration]);
+    setIsPlaying(true); // Auto-play when a new exercise starts
+    let timer;
+    let progressInterval;
+
+    if (isPlaying) {
+      // Timer to count down seconds
+      timer = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timer);
+            clearInterval(progressInterval);
+            handleSkipInternal(); // Automatically skip to the next exercise when time ends
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+
+      // Interval to update progress bar
+      progressInterval = setInterval(() => {
+        setProgress((prevProgress) => prevProgress + 100 / duration);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(progressInterval);
+    };
+
+  }, [img, isPlaying,duration]); // Ensure reset when a new exercise image is loaded
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
+  };
+
+  const handleSkipInternal = () => {
+    setTimeLeft(duration);
+    setProgress(0);
+    setIsPlaying(false); // Reset to play mode
+    onSkip(); // Call the external skip function to proceed to the next exercise
   };
 
   return (
@@ -50,15 +90,15 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
       <div className="w-full h-full rounded-lg sm:w-10 sm:h-10 md:w-15 md:h-15 lg:w-20 lg:h-20 bg-yellow-200 flex items-center justify-center mb-4 mt-10">
         <img className="w-24 h-20 object-contain" src={img} alt={name} />
       </div>
-      
+
       {/* Name of the Exercise */}
       <p className="text-lg font-semibold mb-2 text-center">{name}</p>
-      
+
       {/* Instructions Container */}
       <div className="border-2 h-72 border-gray-300 p-4 rounded-lg mb-4">
         <p className="text-sm text-gray-700">{instructions}</p>
       </div>
-      
+
       {/* Slider */}
       <div className="w-full max-w-lg bg-gray-200 rounded-full h-2.5 mb-4">
         <div
@@ -66,7 +106,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
           style={{ width: `${progress}%` }}
         />
       </div>
-      
+
       <div className="flex space-x-4">
         <img
           className="w-8 h-8 md:w-10 md:h-10 bg-yellow-200 p-2 rounded-full cursor-pointer"
@@ -78,10 +118,10 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
           className="w-8 h-8 md:w-10 md:h-10 bg-yellow-200 p-2 rounded-full cursor-pointer"
           src={skip}
           alt="Skip"
-          onClick={onSkip} // Trigger onSkip directly
+          onClick={handleSkipInternal} // Use internal skip handler to reset timer and progress
         />
       </div>
-      
+
       {/* Display Time Left */}
       <p className="mt-4 text-lg font-semibold text-gray-700">
         Time Left: {timeLeft} seconds
@@ -91,3 +131,4 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
 };
 
 export default InsideStart;
+
