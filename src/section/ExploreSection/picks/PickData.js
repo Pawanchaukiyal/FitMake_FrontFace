@@ -1,21 +1,21 @@
 export const PickData = [
   {
-    imglink: "https://cdn1.vectorstock.com/i/1000x1000/83/30/fat-burning-workout-exercises-vector-25048330.jpg",
+    imglink: "https://i.ytimg.com/vi/4-mcfSfPLyk/maxresdefault.jpg",
     heading: "Workout to Burn The Belly Fat",
     value: "belly"
   },
   {
-    imglink: "https://th.bing.com/th/id/R.b2d98e285dd0c6070a6c04001e56ccd4?rik=ytxBkdLani%2fPOw&riu=http%3a%2f%2fmedia-cache-ec0.pinimg.com%2f736x%2f46%2ff5%2f49%2f46f54906ab07a3340dbe79f3dc30a830.jpg&ehk=PXjKP1dzdMkE2XI4r7kdiG9PpeK5qc1lPPfKUZHGr8g%3d&risl=&pid=ImgRaw&r=0",
+    imglink: "https://www.lharepresents.com/wp-content/uploads/2022/09/JWP_8086-Lo-res.jpg",
     heading: "Best for Strengthing Core",
     value: "core"
   },
   {
-    imglink: "https://th.bing.com/th/id/OIP.jCEbThBIpBpPa-JGTIrjbgAAAA?rs=1&pid=ImgDetMain",
+    imglink: "https://healthyceleb.com/wp-content/uploads/2015/06/Get-lunges-right.jpg",
     heading: "Strengthing you leg",
     value: "legs"
   },
   {
-      imglink: "https://besigebreintjies.co.za/wp-content/uploads/2020/05/kids_yoga.png",
+      imglink: "https://images.squarespace-cdn.com/content/v1/563299f2e4b032dcbca731a0/1612051587858-6D3OUMSGSXMQRE38UATZ/yoga-kids-classes.jpg",
       heading: "Yoga with Kids",
       value: "easy" // Corrected typo
   },
@@ -24,9 +24,9 @@ export const PickData = [
       heading: "Yoga for flexibility",
       value: "medium"
   },
-  {
-      imglink: "https://i.pinimg.com/736x/ab/6f/a8/ab6fa8e54b08cef465fcfd9233b032ce--pro-fitness-fitness-motivation.jpg",
-      heading: "Only for abs",
-      value: "abs"
-  },
+  // {
+  //     imglink: "https://i.pinimg.com/736x/ab/6f/a8/ab6fa8e54b08cef465fcfd9233b032ce--pro-fitness-fitness-motivation.jpg",
+  //     heading: "Only for abs",
+  //     value: "abs"
+  // },
 ];
