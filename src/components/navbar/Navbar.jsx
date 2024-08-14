@@ -12,12 +12,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="main_div flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 sticky">
+      <nav className="main_div flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 bg-gray-50">
         <div className="logo">
           <img
             src={logo}
             alt="logo.gif"
-            className="w-28 h-28 object-cover md:w-[145px] md:h-[65px]"
+            className="w-28 h-20 object-cover md:w-[145px] md:h-[55px]"
           />
         </div>
 
@@ -38,13 +38,13 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="p-4 font-medium flex-end">
+          <div className="p-4 font-medium flex-end rounded-md">
             <DropDownMenu />
           </div>
         </div>
 
         {/* Dropdown Menu for Large Screen */}
-        <div className="hidden font-medium md:block mr-4 p-5">
+        <div className="hidden font-medium md:block rounded-md mr-4 p-5">
           <DropDownMenu />
         </div>
       </nav>

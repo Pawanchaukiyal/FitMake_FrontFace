@@ -16,11 +16,11 @@ export const bodyfocusdata = [
   },
   {
     imglink: shoulder,
-    text: "Shoulder",
+    text: "Shoulders",
   },
   {
     imglink: leg,
-    text: "Leg",
+    text: "Legs",
   },
   {
     imglink: back,

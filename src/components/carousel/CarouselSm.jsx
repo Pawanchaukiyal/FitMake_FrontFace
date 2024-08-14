@@ -28,9 +28,9 @@ const CarouselSm = () => {
   }, [cards.length, delay]);
 
   return (
-    <div className="mt-5 border-2 flex justify-center items-center rounded-2xl ml-5 mr-5">
+    <div className="mt-5 border-2 flex justify-center bg-yellow-200 items-center rounded-2xl ml-5 mr-5">
       <div className="mr-5 p-6 overflow-hidden flex-shrink-0 bg-gray-250">
-        <img src={cards[activeIndex].image} className="h-10 w-12 object-cover" alt="icon" />
+        <img src={cards[activeIndex].image} className="h-10 w-12 object-contain" alt="icon" />
       </div>
       <div className="p-6">
         <p>{cards[activeIndex].text}</p>

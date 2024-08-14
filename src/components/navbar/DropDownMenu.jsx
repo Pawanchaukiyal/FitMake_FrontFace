@@ -4,15 +4,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { handleShare } from './HandleShare';
 
 const DropDownMenu = () => {
   return (
-    <div className="flex justify-center bg-white px-3 py-2">
-      <ChevronUpDownIcon aria-hidden="true" className="relative top-0.5 h-5 w-5 text-gray-400" />
-      <FlyoutLink href="#" FlyoutContent={OtherMenu}>
-        More
-      </FlyoutLink>
-    </div>
+  <div className="flex justify-center bg-grey-100 px-3 py-2">
+  <ChevronUpDownIcon aria-hidden="true" className="relative top-0.5 h-5 w-5 text-black-400" />
+   <FlyoutLink href="#" FlyoutContent={OtherMenu}>
+     More
+     </FlyoutLink>
+     </div>
   );
 };
 
@@ -59,9 +60,9 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
 const OtherMenu = () => {
   const handleClick = () => {
     toast.info('This feature is coming soon shortly', {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -69,26 +70,28 @@ const OtherMenu = () => {
     });
   };
 
+
+
   return (
-    <div className="w-64 bg-white p-6 shadow-xl ">
+    <div className="w-64 bg-gray-100 p-6 shadow-xl rounded-lg">
       <div className="mb-3 space-y-3 ">
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 rounded-sm">
           Blog
         </Link>
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
+        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 rounded-sm">
           Report
         </Link>
       </div>
       <div className="mb-6 space-y-3">
-        <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
-          Cart
-        </Link>
-        <Link to={'/share'} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
+        <Link to={'#'} onClick={handleShare} className="block text-sm hover:underline hover:bg-gray-200 rounded-sm">
           Share With Friends
         </Link>
-        <Link to={'/feedback'} className="block text-sm hover:underline hover:bg-gray-100 rounded-sm">
+        <a
+          href="mailto:pawanchaukiyal@gmail.com?subject=Share%20your%20opinion"
+          className="block text-sm hover:underline hover:bg-gray-200 rounded-sm"
+        >
           Feedback
-        </Link>
+        </a>
       </div>
     </div>
   );

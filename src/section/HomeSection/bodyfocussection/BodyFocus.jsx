@@ -5,8 +5,10 @@ import BodyFocusCard from '../../../components/cards/bodyfocuscard/BodyFocusCard
 const BodyFocus = () => {
   return (
     <>
-      <h1 className="text-center mt-7 font-bold text-2xl">Body Focus</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 gap-y-3 mt-2 px-4 mb-10">
+      <h1 className="text-center font-medium font-mono text-2xl  mt-5 md:mt-8">
+        Body Focus
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-x-2 mt-2">
       {bodyfocusdata.map((item, index) => {
           return (
             <BodyFocusCard

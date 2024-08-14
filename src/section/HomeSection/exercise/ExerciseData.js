@@ -4,21 +4,23 @@ export const Exercisedata = [
       heading: "Beginner",
       level: "easy",
       text: "Click it...",
-      description:""
+    description:"This exercise is specially design for begineer"
     },
     {
       imglink: "https://wallpaperaccess.com/full/2465434.jpg",
       heading: "Intermediate",
       level: "medium",
       text: "Click it...",
-      description:""
+      description:"If you spend some time, welcome to intermediate level",
+      
     },
     {
       imglink: "https://wallpapercave.com/wp/wp2333032.jpg",
       heading: "Advanced",
       level: "hard",
       text: "Click it...",
-      description:""
+      description:"For those who like to challenges.",
+
     },
   ];
   

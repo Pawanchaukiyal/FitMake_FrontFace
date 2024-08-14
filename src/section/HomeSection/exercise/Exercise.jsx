@@ -5,7 +5,7 @@ import Card1 from "../../../components/cards/Card1";
 const Exercise = () => {
   return (
     <>
-      <h1 className="text-center font-bold text-2xl mt-7">
+      <h1 className="text-center font-medium font-mono text-2xl  mt-6 md:mt-9 ">
         Perform Exercise to the level
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-5">

@@ -27,12 +27,12 @@ import React from "react";
 
             {/* User */}
      
-                <Link to={'/user-dashboard'}>User</Link>
+                {/* <Link to={'/user-dashboard'}>User</Link> */}
    
 
             {/* Admin */}
 
-                <Link to={'/admin-dashboard'}>Admin</Link>
+                {/* <Link to={'/admin-dashboard'}>Admin</Link> */}
 
 
             {/* logout */}
