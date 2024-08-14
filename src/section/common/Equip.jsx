@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Equip = () => {
-  const { value } = useParams();
+  const { equip } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const Equip = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/v1/exercises/category/${value}`);
+        const response = await fetch(`http://localhost:8000/api/v1/exercises/category/${equip}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -26,7 +26,7 @@ const Equip = () => {
     };
 
     fetchData();
-  }, [value]);
+  }, [equip]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -38,7 +38,7 @@ const Equip = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center my-4">Results for "{value}"</h1>
+      <h1 className="text-3xl font-bold text-center my-4">Results for "{equip}"</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((item, index) => (
           <div key={index} className="bg-white p-4 shadow rounded-lg">

@@ -9,7 +9,9 @@ const ExerciseAotCard = ({ imglink, heading, value }) => {
   };
 
   return (
-    <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg min-w-[300px] md:min-w-[350px] lg:min-w-[400px]">
+    <div className="relative p-4 shadow-xl ring-1 ring-gray-900/10 rounded-lg sm:mx-auto sm:rounded-lg bg-gray-100 transition-transform transform hover:scale-105
+    min-w-[250px] md:min-w-[300px] lg:min-w-[350px] 
+    sm:mb-4 sm:mr-4 mr-6 flex-shrink-0">
       <div className="mx-auto">
         <img src={imglink} className="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg object-cover" alt="img" />
         <div className="divide-y divide-gray-300/50 mt-4">

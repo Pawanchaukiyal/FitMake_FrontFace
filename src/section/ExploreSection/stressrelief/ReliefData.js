@@ -12,6 +12,11 @@ export const ReliefData = [
     {
       imglink: "https://th.bing.com/th/id/OIP._Mn2UwzmWgzhYeogFnr42wHaHa?w=166&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       heading: "Lower body",
-      value: "leg"
+      value: "legs"
+    },
+    {
+      imglink: "https://s36370.pcdn.co/wp-content/uploads/2017/02/23-Powerful-Yin-Yoga-Sequences-We-Love.jpg",
+      heading: "Yin Yoga",
+      value: "belly"
     },
 ]

@@ -34,7 +34,7 @@ const Card1 = ({ imglink, heading, text, value, exerciselevel, description }) =>
               onClick={handleNavigation}
               className="bg-blue-500 hover:bg-blue-700 text-white text-lg sm:text-xl font-bold py-2 px-4 border border-blue-700 rounded w-full"
             >
-              {text}
+              {text || "Click it..."} 
             </button>
           </div>
         </div>

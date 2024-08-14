@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const EquipmentCard = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-      navigate('/equip/{equip}');
+      navigate('/equip/equip');
   };
   return (
     <div className="relative bg-white p-6 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg min-w-[300px] md:min-w-[350px] lg:min-w-[400px]">

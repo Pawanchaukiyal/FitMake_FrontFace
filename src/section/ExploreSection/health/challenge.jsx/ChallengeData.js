@@ -17,7 +17,7 @@ export const ChallengeData = [
     {
         imglink: "https://th.bing.com/th/id/R.e3df26c765fe0d0e16400c1fb27b59a2?rik=z6NeyLcliDVXQw&riu=http%3a%2f%2fwww.yeahweworkout.com%2fupload%2f20170218034649uid1.png&ehk=uHFFg9Io6dZkmNEfgJyrG7T2zT5GHmqz3uCHw0NL7aA%3d&risl=&pid=ImgRaw&r=0",
         heading: "Build wide shoulder",
-        value: "shoulder" // Corrected typo
+        value: "shoulders" // Corrected typo
     },
 
   ];

@@ -17,6 +17,9 @@ import CommonUnifiedLevel from "./section/common/CommonUnifiedLevel";
 import CommonUnifiedAot from "./section/common/CommonUnifiedAot";
 import CommonPick from "./section/common/CommonPick";
 import Equip from "./section/common/Equip";
+import CommonYogaAot from "./section/common/CommonYogaAot";
+
+
 
 const App = () => {
   return (
@@ -47,7 +50,9 @@ const App = () => {
         <Route path="/yogalevel/:value" element={<CommonPick />} />
         <Route path="/aot/:value" element={<Commonaot />} />
         <Route path="/aot/:value" element={<Commonaot />} />
-        <Route path="/category/:value" element={<Equip />} />
+        <Route path="/equip/:equip" element={<Equip />} />
+        <Route path="/yogaaot/:value" element={<CommonYogaAot />} />
+
         <Route path="/exercise/exerciseaot/:value" element={<Common4 />} />
         <Route path="/start" element={<Start />} />
       </Routes>

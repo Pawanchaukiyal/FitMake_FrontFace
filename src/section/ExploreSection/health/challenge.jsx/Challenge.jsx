@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
-import View from '../../material/View';
 import { ChallengeData } from './ChallengeData';
-import ExerciseAotCard from '../../components/cards/exercisecard/ExerciseAotCard';
+import ExerciseAotCard from '../../../../components/cards/exercisecard/ExerciseAotCard';
+// import View from '../../../../material/View';
+
 
 
 const Challenge = () => {
@@ -17,9 +18,10 @@ const Challenge = () => {
 
   return (
     <>
-      <div className=' p-4 sm:mt-2 md:mt-4'>
-        <h1 className='text-center text-2xl mt-4 font-bold'>Challenges For You</h1>
-        <View />
+      <h1 className="text-center font-medium font-mono text-2xl  mt-5 md:mt-8">
+        Challenges
+      </h1>
+        {/* <View /> */}
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 
             className="absolute opacity-[0.6] w-16 h-16 left-0 bg-gray-800 text-white p-2 rounded-full z-10" 
@@ -49,7 +51,7 @@ const Challenge = () => {
             &gt;
           </button>
         </div>
-      </div>
+
     </>
   );
 };

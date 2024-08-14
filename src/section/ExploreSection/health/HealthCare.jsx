@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import View from '../../../material/View';
 // import ExploreCard1C from '../../../components/cards/explorecard/ExploreCard1C';
 import { HealthData } from './HealthData';
-import Card1 from '../../../components/cards/Card1';
+import ExploreYoga from '../../../components/cards/explorecard/ExploreYoga';
 
 const HealthCare = () => {
   const scrollContainerRef = useRef(null);
@@ -17,12 +17,13 @@ const HealthCare = () => {
 
   return (
     <>
-      <div className='p-4 sm:mt-2 md:mt-4 '>
-        <h1 className='text-center text-2xl mt-4 font-bold'>HealtCare</h1>
-        <View/>
+      <h1 className="text-center font-medium font-mono text-2xl  mt-5 md:mt-8">
+        Health Care
+      </h1>
+        {/* <View /> */}
         <div className="relative flex items-center sm:mt-2 md:mt-4 p-2">
           <button 
-            className="absolute opacity-[0.6]  w-16 h-16 left-0 bg-gray-800 text-white p-2 rounded-full z-10" 
+            className="absolute opacity-[0.6] w-16 h-16 left-0 bg-gray-800 text-white p-2 rounded-full z-10" 
             onClick={scrollLeft}
           >
             &lt;
@@ -31,19 +32,16 @@ const HealthCare = () => {
             className='flex gap-2 sm:gap-16 overflow-x-auto px-4' 
             ref={scrollContainerRef}
           >
-           {
-            HealthData.map((item,index)=>{
-              return(
-                <Card1
-                key={index}
-                heading={item.heading}
-                imglink={item.imglink}
-                value={item.value}
-                text={"Click it.."}
+            {
+              HealthData.map((item, index) => (
+                <ExploreYoga 
+                  key={index}
+                  heading={item.heading}
+                  imglink={item.imglink}
+                  value={item.value}
                 />
-              )
-            })
-           }
+              ))
+            }
           </div>
           <button 
             className="absolute opacity-[0.6] right-0 w-16 h-16 bg-gray-800 text-white p-2 rounded-full z-10" 
@@ -52,7 +50,7 @@ const HealthCare = () => {
             &gt;
           </button>
         </div>
-      </div>
+
     </>
   );
 };

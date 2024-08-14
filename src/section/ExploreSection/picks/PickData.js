@@ -1,7 +1,7 @@
 export const PickData = [
   {
     imglink: "https://cdn1.vectorstock.com/i/1000x1000/83/30/fat-burning-workout-exercises-vector-25048330.jpg",
-    heading: "Work to Burn Belly Fat",
+    heading: "Workout to Burn The Belly Fat",
     value: "belly"
   },
   {
@@ -12,7 +12,7 @@ export const PickData = [
   {
     imglink: "https://th.bing.com/th/id/OIP.jCEbThBIpBpPa-JGTIrjbgAAAA?rs=1&pid=ImgDetMain",
     heading: "Strengthing you leg",
-    value: "leg"
+    value: "legs"
   },
   {
       imglink: "https://besigebreintjies.co.za/wp-content/uploads/2020/05/kids_yoga.png",
