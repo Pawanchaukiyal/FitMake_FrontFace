@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import InsideStart from "./InsideStart";
+import Loader from "../components/loader/Loader";
 
 const Start = () => {
   const location = useLocation();
-  const { data } = location.state || {}; // Get data from location state
+  const [loading, setLoading] = useState(true); // Start with loading as true
+  const [data, setData] = useState([]); // Initialize data state
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    // Simulate data fetching
+    const fetchData = () => {
+      // Simulate a delay
+      setTimeout(() => {
+        // Set data from location or mock data here
+        setData(location.state?.data || []);
+        setLoading(false); // Data is loaded, set loading to false
+      }, 2000); // Adjust time as needed
+    };
+
+    fetchData();
+
+    // Cleanup if needed
+    return () => {
+      // Any cleanup logic if required
+    };
+  }, [location.state?.data]);
 
   const handleSkip = () => {
     if (currentIndex + 1 < data.length) {
@@ -15,6 +36,10 @@ const Start = () => {
       console.log("All exercises completed!");
     }
   };
+
+  if (loading) {
+    return <Loader />; // Show loader while loading is true
+  }
 
   if (!data || data.length === 0) {
     return <p>No data available</p>;

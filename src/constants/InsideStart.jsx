@@ -135,24 +135,38 @@ import React, { useState, useEffect } from "react";
 import play from "../section/common/play.svg";
 import skip from "../section/common/skip.svg";
 import pause from "../section/common/pause.svg";
+import Loader from "../components/loader/Loader"; // Import the Loader component
 
 const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true); // Start playing by default
+  const [loading, setLoading] = useState(true); // Start with loading as true
 
+  // Simulate loading or data fetching
   useEffect(() => {
-    // Reset timeLeft and progress when img or duration changes
+    const loadData = () => {
+      setTimeout(() => {
+        setLoading(false); // Set loading to false after data is "loaded"
+      }, 2000); // Simulate a 2-second delay
+    };
+
+    loadData(); // Call the loadData function to simulate fetching data
+  }, []); // Empty dependency array means this runs once on component mount
+
+  // Reset timeLeft and progress when img or duration changes
+  useEffect(() => {
     setTimeLeft(duration);
     setProgress(0);
     setIsPlaying(true); // Auto-play when a new exercise starts
   }, [img, duration]);
 
+  // Timer and progress interval effect
   useEffect(() => {
     let timer;
     let progressInterval;
 
-    if (isPlaying) {
+    if (isPlaying && !loading) { // Ensure not running if loading
       // Timer to count down seconds
       timer = setInterval(() => {
         setTimeLeft((prevTime) => {
@@ -183,20 +197,22 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
       clearInterval(timer);
       clearInterval(progressInterval);
     };
-  }, [isPlaying, duration]); // Run effect when isPlaying or duration changes
+  }, [isPlaying, duration, loading]); // Run effect when isPlaying, duration, or loading changes
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
   const handleSkipInternal = () => {
-    // Reset time and progress and stop playing
     setTimeLeft(duration);
     setProgress(0);
     setIsPlaying(false);
-    // Call the external skip function
-    onSkip();
+    onSkip(); // Call the external skip function
   };
+
+  if (loading) {
+    return <Loader />; // Display the loader if loading is true
+  }
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen overflow-hidden">
@@ -249,6 +265,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
 };
 
 export default InsideStart;
+
 
 
 
