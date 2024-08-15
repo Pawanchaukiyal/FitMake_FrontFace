@@ -5,7 +5,7 @@ import Picks from '../section/ExploreSection/picks/Picks'
 import StressRelief from '../section/ExploreSection/stressrelief/StressRelief'
 import HealthCare from '../section/ExploreSection/health/HealthCare'
 import EquipmentCard from '../components/cards/explorecard/EquipmentCard'
-import Challenge from '../section/ExploreSection/health/challenge.jsx/Challenge'
+import Challenge from '../section/ExploreSection/challenge.jsx/Challenge'
 const Explore = () => {
   return (
     <Layout>

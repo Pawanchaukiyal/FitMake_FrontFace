@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import SmallCard from '../../components/cards/smallcard/SmallCard';
+import Button from '../../constants/Button';
 
 const Common4 = () => {
   const { value } = useParams();
@@ -37,15 +39,27 @@ const Common4 = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center my-4">Results for "{value}"</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((item, index) => (
-          <div key={index} className="bg-white p-4 shadow rounded-lg">
-            <h2 className="text-xl font-semibold">{item.name}</h2>
-            <p>{item.description}</p>
-          </div>
-        ))}
+<div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+      {error && <p className="text-red-500">{error}</p>}
+      {data.length > 0 ? (
+        <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
+          {data.map((item, index) => (
+            <SmallCard
+            key={index}
+            data={{
+              img:item.exerciseImage,
+              name: item.name,
+              // description:item.description
+              //level: item.level, // You can add any other relevant properties here
+            }}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center text-gray-500 mt-4">No data available for this {value}</p>
+      )}
+      <div className="mt-6 w-full flex justify-center">
+        <Button data={data} />
       </div>
     </div>
   );

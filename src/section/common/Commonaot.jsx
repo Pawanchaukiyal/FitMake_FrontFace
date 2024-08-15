@@ -30,7 +30,12 @@ const Commonaot = () => {
       {combinedData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {combinedData.map((item, index) => (
-            <SmallCard key={index} data={item} name={item.name} img={item.yogaImage || item.exerciseImage} />
+            <SmallCard key={index} 
+            data={{
+             name:item.name,
+             img:item.yogaImage || item.exerciseImage
+          }}
+             />
           ))}
         </div>
       ) : (

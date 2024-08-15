@@ -46,9 +46,11 @@ const CommonPick = () => {
           {combinedData.map((item, index) => (
             <SmallCard
               key={index}
-              data={item}
-              name={item.name}
-              img={item.yogaImage || item.exerciseImage}
+              data={{
+                img: item.yogaImage || item.exerciseImage,
+                name: item.name,
+                //level: item.level, // You can add any other relevant properties here
+              }}
             />
           ))}
         </div>

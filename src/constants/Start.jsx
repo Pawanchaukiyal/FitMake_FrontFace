@@ -46,11 +46,12 @@ const Start = () => {
   }
 
   const currentExercise = data[currentIndex];
+  
 
   return (
     <div className="bg-gray-200 w-full h-screen">
       <InsideStart
-        img={currentExercise.yogaImage}
+        img={currentExercise.yogaImage||currentExercise.exerciseImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
         duration={10} // Duration in seconds

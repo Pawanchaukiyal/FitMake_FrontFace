@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { ChallengeData } from './ChallengeData';
-import ExerciseAotCard from '../../../../components/cards/exercisecard/ExerciseAotCard';
+import ExerciseAotCard from '../../../components/cards/exercisecard/ExerciseAotCard';
 // import View from '../../../../material/View';
 
 

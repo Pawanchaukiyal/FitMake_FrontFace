@@ -45,13 +45,18 @@ const CommonUnifiedAot = () => {
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {filteredData.map((item, index) => (
             <SmallCard
-              key={index}
-              data={item}
-              name={item.name}
-              img={yogaaot ? item.yogaImage : item.exerciseImage} // Use yogaImage or Image based on the context
-            />
+            key={index}
+            data={{
+              img: yogaaot ? item.yogaImage : item.exerciseImage,
+              name: item.name,
+              level: item.level,
+              // Add other properties if needed
+            }}
+          />
           ))}
         </div>
+
+        
       ) : (
         <p className="text-center text-gray-500 mt-4">
           No data available for this {yogaaot || exerciseaot}
