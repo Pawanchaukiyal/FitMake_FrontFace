@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { playSound } from '../../public/utils';
 
 const CompletePage = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const playCompleteSound = () => {
+      playSound('complete'); // Play the 'complete' sound when the page loads
+    };
+
+    playCompleteSound();
+
+    return () => {
+      // Optional: Cleanup if needed, e.g., stop the sound if it's looping
+    };
+  }, []);
 
   const handleClick = () => {
     navigate('/'); // Navigate to the home page
@@ -13,8 +26,8 @@ const CompletePage = () => {
       className="main-div h-screen flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: "url('https://images.unsplash.com/photo-1605296867724-fa87a8ef53fd')" }}
     >
-      <div className="text-center p-4  bg-opacity-75 rounded-lg shadow-lg absolute bottom-20">
-        <h1 className="font-mono text-2xl text-white mb-4">Hurray You Completed the Exercise....</h1>
+      <div className="text-center p-4 bg-opacity-75 rounded-lg shadow-lg absolute bottom-20">
+        <h1 className="font-mono text-2xl text-white mb-4">Hurray! You Completed the Exercise....</h1>
         <div>
           <button
             onClick={handleClick}

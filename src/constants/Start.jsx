@@ -2,35 +2,41 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import InsideStart from "./InsideStart";
 import Loader from "../components/loader/Loader";
-import CompletePage from "../pages/CompletePage";
+import { playSound } from "../../public/utils";
+import BreakPage from "../pages/BreakPage";
+ // Adjust path if necessary
 
 const Start = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [initialLoad, setInitialLoad] = useState(true); // To track if it's the first data load
 
   useEffect(() => {
     const fetchData = () => {
       setTimeout(() => {
         setData(location.state?.data || []);
         setLoading(false);
+        playSound('start'); // Play start sound when data is first loaded
+        setInitialLoad(false); // Set initial load to false after the first data load
       }, 2000);
     };
 
     fetchData();
-
-    return () => {
-      // Cleanup if needed
-    };
   }, [location.state?.data]);
+
+  useEffect(() => {
+    if (!loading && !initialLoad) {
+      playSound('whistle'); // Play whistle sound on new exercise, but not on first data load
+    }
+  }, [currentIndex, loading]);
 
   const handleSkip = () => {
     if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     } else {
-      // Redirect to CompletePage when all exercises are completed
       navigate('/complete'); // Ensure '/complete' matches the route in your router setup
     }
   };

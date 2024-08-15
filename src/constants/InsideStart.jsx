@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import play from "../section/common/play.svg";
 import skip from "../section/common/skip.svg";
 import pause from "../section/common/pause.svg";
-import Loader from "../components/loader/Loader"
+import Loader from "../components/loader/Loader";
+import { playSound } from "../../public/utils";
+// Adjust path if necessary
 
 const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
@@ -14,6 +16,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     const loadData = () => {
       setTimeout(() => {
         setLoading(false); // Set loading to false after data is "loaded"
+        playSound('start'); // Play start sound
       }, 2000);
     };
 
@@ -37,6 +40,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
             clearInterval(timer);
             clearInterval(progressInterval);
             handleSkipInternal();
+            playSound('complete'); // Play complete sound
             return 0;
           }
           return prevTime - 1;
@@ -69,6 +73,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     setProgress(0);
     setIsPlaying(false);
     onSkip();
+    playSound('whistle'); // Play skip sound
   };
 
   if (loading) {

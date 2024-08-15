@@ -36,11 +36,11 @@ import React from "react";
 
 
             {/* logout */}
-          <li className=" cursor-pointer" >
+          {/* <li className=" cursor-pointer" >
               <Link to={'/logout'}>
               Logout
               </Link>
-            </li>
+            </li> */}
 
             {/* Cart
             <li>

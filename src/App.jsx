@@ -19,7 +19,8 @@ import CommonPick from "./section/common/CommonPick";
 import Equip from "./section/common/Equip";
 import CommonYogaAot from "./section/common/CommonYogaAot";
 import CompletePage from "./pages/CompletePage";
-
+import BreakPage from "./pages/BreakPage";
+import NoPage from "./pages/NoPage";
 
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
     <div className=".back__bg">
       <ScrollTop />
       <Routes>
+         {/* Catch-all route for undefined pages */}
+         <Route path="*" element={<NoPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/login" element={<Login />} />
@@ -57,7 +60,7 @@ const App = () => {
         <Route path="/exercise/exerciseaot/:value" element={<Common4 />} />
         <Route path="/start" element={<Start />} />
         <Route path="/complete" element={<CompletePage />} />
-
+        <Route path="/break" element={<BreakPage />} />
       </Routes>
     </div>
   );
