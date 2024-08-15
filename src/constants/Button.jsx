@@ -9,12 +9,13 @@ const Button = ({ data }) => {
   };
 
   return (
-    <div
-      onClick={handleClick}
-      className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200 text-center"
-    >
-      Start
-    </div>
+<div
+  onClick={handleClick}
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-24 text-center "
+>
+  Start
+</div>
+
   );
 };
 

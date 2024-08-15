@@ -46,11 +46,14 @@ const CommonUnifiedLevel = () => {
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {filteredData.map((item, index) => (
             <SmallCard
-              key={index}
-              data={item}
-              name={item.name}
-              img={yogalevel ? item.yogaImage : item.exerciseImage} // Use yogaImage or Image based on the context
-            />
+            key={index}
+            data={{
+              img: yogalevel ? item.yogaImage : item.exerciseImage,
+              name: item.name,
+              level: item.level,
+              // Add other properties if needed
+            }}
+          />
           ))}
         </div>
       ) : (

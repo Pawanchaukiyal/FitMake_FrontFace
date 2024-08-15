@@ -190,25 +190,31 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
   };
 
   const handleSkipInternal = () => {
+    // Reset time and progress and stop playing
     setTimeLeft(duration);
     setProgress(0);
-    setIsPlaying(false); // Stop playing after skipping
-    onSkip(); // Call the external skip function
+    setIsPlaying(false);
+    // Call the external skip function
+    onSkip();
   };
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen bg-blue-400">
+    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen overflow-hidden">
       {/* Image Container */}
-      <div className="w-full h-full rounded-lg sm:w-10 sm:h-10 md:w-15 md:h-15 lg:w-20 lg:h-20 bg-yellow-200 flex items-center justify-center mb-4 mt-10">
-        <img className="w-24 h-20 object-contain" src={img} alt={name} />
+      <div className="mt-12 w-full max-w-[90%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] h-auto overflow-hidden rounded-lg img_sec border-4 hover:scale-105 transform transition-transform duration-300 shadow-lg">
+        <img
+          className="w-full h-full object-contain"
+          src={img}
+          alt={name}
+        />
       </div>
 
       {/* Name of the Exercise */}
-      <p className="text-lg font-semibold mb-2 text-center">{name}</p>
+      <p className="text-lg font-semibold font-mono mt-4 mb-4 underline text-center">{name}</p>
 
       {/* Instructions Container */}
-      <div className="border-2 h-72 border-gray-300 p-4 rounded-lg mb-4">
-        <p className="text-sm text-gray-700">{instructions}</p>
+      <div className="border-2 h-72 border-gray-300 hover:bg-yellow-200 p-8 rounded-lg mb-4 overflow-hidden box-border">
+        <p className="text-lg sm:text-2xl font-mono font-bold">{instructions}</p>
       </div>
 
       {/* Slider */}
@@ -243,3 +249,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
 };
 
 export default InsideStart;
+
+
+
+

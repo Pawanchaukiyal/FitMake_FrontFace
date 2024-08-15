@@ -1,26 +1,28 @@
+
+
+
 import React from "react";
 
 const SmallCard = ({ data }) => {
   return (
-    <div className="relative group bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg p-5 transition-transform transform hover:scale-105">
-      <div className="relative bg-white p-6 rounded-lg shadow-lg overflow-hidden flex  items-center">
+    <div className="bg-gray-100 p-4 rounded-lg shadow-lg md:hover:shadow-yellow-400 transition-shadow duration-300 mb-4">
+      <div className="flex flex-row items-center">
         {/* Popup effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-80 transition-opacity duration-500 rounded-lg"></div>
-
-        <div className="flex flex-col items-center space-y-2 mt-4 relative z-10 md:mr-8 ">
-          <img
-            className="w-[90px] h-[60px] object-cover border-2 border-purple-600"
-            src={data.img}
-            alt={data.name}
-          />
+        <div className="relative group">
+          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-25 transition-opacity duration-300 flex items-center justify-center text-white text-sm font-semibold p-2 rounded-lg">
+            {data.level} 
+          </div>
+          <div className="w-28 h-24 sm:w-56 sm:h-40 overflow-hidden rounded-lg">
+            <img
+              className="w-full h-full object-cover"
+              src={data.img}  
+              alt={data.name} 
+            />
+          </div>
         </div>
-        <div className="text-center mt-4 flex flex-col items-center justify-center space-y-2 relative z-10">
-          <p className="text-md md:text-2xl lg:text-3xl font-bold text-slate-800">
-            {data.name}
-          </p>
-          <p className="text-md md:text-xl lg:text-2xl text-slate-600 uppercase">
-            {data.level}
-          </p>
+        <div className="m-auto ml-auto text-center sm:text-left">
+          <p className="text-lg font-semibold font-mono">{data.name}</p>
+          <p className="text-sm text-gray-700 mt-1 font-mono">{data.level}</p>
         </div>
       </div>
     </div>
@@ -28,3 +30,4 @@ const SmallCard = ({ data }) => {
 };
 
 export default SmallCard;
+
