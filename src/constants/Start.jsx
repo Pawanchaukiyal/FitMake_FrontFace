@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import InsideStart from "./InsideStart";
 import Loader from "../components/loader/Loader";
+import CompletePage from "../pages/CompletePage";
 
 const Start = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(true); // Start with loading as true
-  const [data, setData] = useState([]); // Initialize data state
+  const navigate = useNavigate(); // Initialize the navigate function
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // Simulate data fetching
     const fetchData = () => {
-      // Simulate a delay
       setTimeout(() => {
-        // Set data from location or mock data here
         setData(location.state?.data || []);
-        setLoading(false); // Data is loaded, set loading to false
-      }, 2000); // Adjust time as needed
+        setLoading(false);
+      }, 2000);
     };
 
     fetchData();
 
-    // Cleanup if needed
     return () => {
-      // Any cleanup logic if required
+      // Cleanup if needed
     };
   }, [location.state?.data]);
 
@@ -32,13 +30,13 @@ const Start = () => {
     if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     } else {
-      // Mark as completed or handle the end of the sequence
-      console.log("All exercises completed!");
+      // Redirect to CompletePage when all exercises are completed
+      navigate('/complete'); // Ensure '/complete' matches the route in your router setup
     }
   };
 
   if (loading) {
-    return <Loader />; // Show loader while loading is true
+    return <Loader />;
   }
 
   if (!data || data.length === 0) {
@@ -46,15 +44,14 @@ const Start = () => {
   }
 
   const currentExercise = data[currentIndex];
-  
 
   return (
     <div className="bg-gray-200 w-full h-screen">
       <InsideStart
-        img={currentExercise.yogaImage||currentExercise.exerciseImage}
+        img={currentExercise.yogaImage || currentExercise.exerciseImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
-        duration={10} // Duration in seconds
+        duration={60} // Duration in seconds
         onSkip={handleSkip} // Handle skip
       />
     </div>

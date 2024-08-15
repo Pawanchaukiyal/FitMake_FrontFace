@@ -1,54 +1,48 @@
-
 import React, { useState, useEffect } from "react";
 import play from "../section/common/play.svg";
 import skip from "../section/common/skip.svg";
 import pause from "../section/common/pause.svg";
-import Loader from "../components/loader/Loader"; // Import the Loader component
+import Loader from "../components/loader/Loader"
 
 const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [progress, setProgress] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true); // Start playing by default
-  const [loading, setLoading] = useState(true); // Start with loading as true
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // Simulate loading or data fetching
   useEffect(() => {
     const loadData = () => {
       setTimeout(() => {
         setLoading(false); // Set loading to false after data is "loaded"
-      }, 2000); // Simulate a 2-second delay
+      }, 2000);
     };
 
-    loadData(); // Call the loadData function to simulate fetching data
-  }, []); // Empty dependency array means this runs once on component mount
+    loadData();
+  }, []);
 
-  // Reset timeLeft and progress when img or duration changes
   useEffect(() => {
     setTimeLeft(duration);
     setProgress(0);
-    setIsPlaying(true); // Auto-play when a new exercise starts
+    setIsPlaying(true);
   }, [img, duration]);
 
-  // Timer and progress interval effect
   useEffect(() => {
     let timer;
     let progressInterval;
 
-    if (isPlaying && !loading) { // Ensure not running if loading
-      // Timer to count down seconds
+    if (isPlaying && !loading) {
       timer = setInterval(() => {
         setTimeLeft((prevTime) => {
           if (prevTime <= 1) {
             clearInterval(timer);
             clearInterval(progressInterval);
-            handleSkipInternal(); // Automatically skip to the next exercise when time ends
+            handleSkipInternal();
             return 0;
           }
           return prevTime - 1;
         });
       }, 1000);
 
-      // Interval to update progress bar
       progressInterval = setInterval(() => {
         setProgress((prevProgress) => {
           if (prevProgress >= 100) {
@@ -60,12 +54,11 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
       }, 1000);
     }
 
-    // Cleanup intervals on unmount or when dependencies change
     return () => {
       clearInterval(timer);
       clearInterval(progressInterval);
     };
-  }, [isPlaying, duration, loading]); // Run effect when isPlaying, duration, or loading changes
+  }, [isPlaying, duration, loading]);
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -75,16 +68,15 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     setTimeLeft(duration);
     setProgress(0);
     setIsPlaying(false);
-    onSkip(); // Call the external skip function
+    onSkip();
   };
 
   if (loading) {
-    return <Loader />; // Display the loader if loading is true
+    return <Loader />;
   }
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen overflow-hidden">
-      {/* Image Container */}
       <div className="mt-12 w-full max-w-[90%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] h-auto overflow-hidden rounded-lg img_sec border-4 hover:scale-105 transform transition-transform duration-300 shadow-lg">
         <img
           className="w-full h-full object-contain"
@@ -93,15 +85,12 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
         />
       </div>
 
-      {/* Name of the Exercise */}
       <p className="text-lg font-semibold font-mono mt-4 mb-4 underline text-center">{name}</p>
 
-      {/* Instructions Container */}
       <div className="border-2 h-72 border-gray-300 hover:bg-yellow-200 p-8 rounded-lg mb-4 overflow-hidden box-border">
         <p className="text-lg sm:text-2xl font-mono font-bold">{instructions}</p>
       </div>
 
-      {/* Slider */}
       <div className="w-full max-w-lg bg-gray-200 rounded-full h-2.5 mb-4">
         <div
           className="bg-green-500 h-2.5 rounded-full"
@@ -124,7 +113,6 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
         />
       </div>
 
-      {/* Display Time Left */}
       <p className="mt-4 text-lg font-semibold text-gray-700">
         Time Left: {timeLeft} seconds
       </p>
@@ -133,8 +121,3 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
 };
 
 export default InsideStart;
-
-
-
-
-

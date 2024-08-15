@@ -18,6 +18,7 @@ import CommonUnifiedAot from "./section/common/CommonUnifiedAot";
 import CommonPick from "./section/common/CommonPick";
 import Equip from "./section/common/Equip";
 import CommonYogaAot from "./section/common/CommonYogaAot";
+import CompletePage from "./pages/CompletePage";
 
 
 
@@ -55,6 +56,8 @@ const App = () => {
 
         <Route path="/exercise/exerciseaot/:value" element={<Common4 />} />
         <Route path="/start" element={<Start />} />
+        <Route path="/complete" element={<CompletePage />} />
+
       </Routes>
     </div>
   );
