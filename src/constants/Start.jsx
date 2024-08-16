@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import InsideStart from "./InsideStart";
 import Loader from "../components/loader/Loader";
-import { playSound } from "../../public/utils";
+import { playSound } from "../../public/utils.js"; // Adjust path as necessary
+
 import BreakPage from "../pages/BreakPage";
- // Adjust path if necessary
+// Adjust path if necessary
 
 const Start = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const Start = () => {
       setTimeout(() => {
         setData(location.state?.data || []);
         setLoading(false);
-        playSound('start'); // Play start sound when data is first loaded
+        playSound("start"); // Play start sound when data is first loaded
         setInitialLoad(false); // Set initial load to false after the first data load
       }, 2000);
     };
@@ -29,7 +30,7 @@ const Start = () => {
 
   useEffect(() => {
     if (!loading && !initialLoad) {
-      playSound('whistle'); // Play whistle sound on new exercise, but not on first data load
+      playSound("whistle"); // Play whistle sound on new exercise, but not on first data load
     }
   }, [currentIndex, loading]);
 
@@ -37,7 +38,7 @@ const Start = () => {
     if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     } else {
-      navigate('/complete'); // Ensure '/complete' matches the route in your router setup
+      navigate("/complete"); // Ensure '/complete' matches the route in your router setup
     }
   };
 

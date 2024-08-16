@@ -3,7 +3,7 @@ import play from "../section/common/play.svg";
 import skip from "../section/common/skip.svg";
 import pause from "../section/common/pause.svg";
 import Loader from "../components/loader/Loader";
-import { playSound } from "../../public/utils";
+import { playSound } from "../../public/utils.js";
 // Adjust path if necessary
 
 const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
@@ -16,7 +16,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     const loadData = () => {
       setTimeout(() => {
         setLoading(false); // Set loading to false after data is "loaded"
-        playSound('start'); // Play start sound
+        playSound("start"); // Play start sound
       }, 2000);
     };
 
@@ -40,7 +40,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
             clearInterval(timer);
             clearInterval(progressInterval);
             handleSkipInternal();
-            playSound('complete'); // Play complete sound
+            // playSound('complete'); // Play complete sound
             return 0;
           }
           return prevTime - 1;
@@ -73,7 +73,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     setProgress(0);
     setIsPlaying(false);
     onSkip();
-    playSound('whistle'); // Play skip sound
+    playSound("whistle"); // Play skip sound
   };
 
   if (loading) {
@@ -83,17 +83,17 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8 w-screen h-screen overflow-hidden">
       <div className="mt-12 w-full max-w-[90%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] h-auto overflow-hidden rounded-lg img_sec border-4 hover:scale-105 transform transition-transform duration-300 shadow-lg">
-        <img
-          className="w-full h-full object-contain"
-          src={img}
-          alt={name}
-        />
+        <img className="w-full h-full object-contain" src={img} alt={name} />
       </div>
 
-      <p className="text-lg font-semibold font-mono mt-4 mb-4 underline text-center">{name}</p>
+      <p className="text-lg font-semibold font-mono mt-4 mb-4 underline text-center">
+        {name}
+      </p>
 
       <div className="border-2 h-72 border-gray-300 hover:bg-yellow-200 p-8 rounded-lg mb-4 overflow-hidden box-border">
-        <p className="text-lg sm:text-2xl font-mono font-bold">{instructions}</p>
+        <p className="text-lg sm:text-2xl font-mono font-bold">
+          {instructions}
+        </p>
       </div>
 
       <div className="w-full max-w-lg bg-gray-200 rounded-full h-2.5 mb-4">
