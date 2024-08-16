@@ -2,7 +2,7 @@ export const HealthData = [
     {
       imglink: "https://th.bing.com/th/id/OIP.kKfkfl6bTjY4G_uwNy28bgAAAA?rs=1&pid=ImgDetMain",
       heading: "Relieve Sciatic Pain",
-      value: ""
+      value: "sciatic"
     },
     {
       imglink: "https://wordpresscmsprodstor.blob.core.windows.net/wp-cms/2022/08/40-2.jpg",
