@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { server } from "../../constants/config";
+import { Server } from "../../constants/config";
 
 const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(`${server}/api/v1/users/logout`, {}, { withCredentials: true });
+      const response = await axios.post(`${Server}/api/v1/users/logout`, {}, { withCredentials: true });
       
       // Handle successful logout (e.g., clear tokens, redirect user)
       toast.success("Logout successful");

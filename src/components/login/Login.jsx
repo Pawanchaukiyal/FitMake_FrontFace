@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { server } from "../../constants/config";
+import { Server } from "../../constants/config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${server}/api/v1/users/login`, { email, password }, { withCredentials: true });
+      const response = await axios.post(`${Server}/api/v1/users/login`, { email, password }, { withCredentials: true });
       // Handle successful login (e.g., store tokens, redirect user)
       toast.success("Login successful");
       navigate("/"); // Redirect to a protected route
