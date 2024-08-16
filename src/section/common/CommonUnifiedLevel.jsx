@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
+import { Server } from "../../constants/config";
 
 const CommonUnifiedLevel = () => {
   const { yogalevel, exerciselevel } = useParams();
@@ -19,9 +20,9 @@ const CommonUnifiedLevel = () => {
 
         // Determine which URL to use based on the presence of level or exerciselevel
         if (yogalevel) {
-          url = `http://localhost:8000/api/v1/yoga/yogalevel/${yogalevel}`;
+          url = `${Server}/api/v1/yoga/yogalevel/${yogalevel}`;
         } else if (exerciselevel) {
-          url = `http://localhost:8000/api/v1/exercises/exerciselevel/${exerciselevel}`;
+          url = `${Server}/api/v1/exercises/exerciselevel/${exerciselevel}`;
         }
 
         const response = await axios.get(url);

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
 import Button from "../../constants/Button";
+import { Server } from "../../constants/config";
 
 const CommonPick = () => {
   const { value } = useParams();
@@ -15,8 +16,8 @@ const CommonPick = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let yogaUrl = `http://localhost:8000/api/v1/yoga/yogaaot/${value}`;
-        let exerciseUrl = `http://localhost:8000/api/v1/exercises/exerciseaot/${value}`;
+        let yogaUrl = `${Server}/api/v1/yoga/yogaaot/${value}`;
+        let exerciseUrl = `${Server}/api/v1/exercises/exerciseaot/${value}`;
 
         // Fetch yoga data
         const yogaResponse = await axios.get(yogaUrl);

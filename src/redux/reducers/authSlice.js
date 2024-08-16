@@ -2,12 +2,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Server } from '../../constants/config';
 
 export const signupUser = createAsyncThunk(
   'auth/signupUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/users/register', userData);
+      const response = await axios.post(`${Server}/api/v1/users/register`, userData);
       toast.success('Signup successful');
       return response.data;
     } catch (error) {

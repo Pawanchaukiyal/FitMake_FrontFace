@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../constants/Button";
 import SmallCard from "../../components/cards/smallcard/SmallCard";
+import { Server } from "../../constants/config";
 
 const CommonUnifiedAot = () => {
   const { yogaaot, exerciseaot } = useParams();
@@ -18,9 +19,9 @@ const CommonUnifiedAot = () => {
 
         // Determine which URL to use based on the presence of level or exerciselevel
         if (yogaaot) {
-          url = `http://localhost:8000/api/v1/yoga/yogaaot/${yogaaot}`;
+          url = `${Server}/api/v1/yoga/yogaaot/${yogaaot}`;
         } else if (exerciseaot) {
-          url = `http://localhost:8000/api/v1/exercises/exerciseaot/${exerciseaot}`;
+          url = `${Server}/api/v1/exercises/exerciseaot/${exerciseaot}`;
         }
 
         const response = await axios.get(url);

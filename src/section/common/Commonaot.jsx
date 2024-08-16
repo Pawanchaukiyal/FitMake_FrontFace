@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
+import { Server } from '../../constants/config';
 
 const Commonaot = () => {
   const { value } = useParams();
@@ -13,7 +14,7 @@ const Commonaot = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/combined/aot/${value}`);
+        const response = await axios.get(`${Server}/api/v1/combined/aot/${value}`);
         setCombinedData(response.data.data);
       } catch (error) {
         console.error('Error fetching combined data:', error);

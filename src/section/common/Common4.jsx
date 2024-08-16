@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
 import Button from '../../constants/Button';
+import { Server } from '../../constants/config';
 
 const Common4 = () => {
   const { value } = useParams();
@@ -14,7 +15,7 @@ const Common4 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/v1/exercises/exerciseaot/${value}`);
+        const response = await fetch(`${Server}/api/v1/exercises/exerciseaot/${value}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
