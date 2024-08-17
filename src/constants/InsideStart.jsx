@@ -16,7 +16,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
     const loadData = () => {
       setTimeout(() => {
         setLoading(false); // Set loading to false after data is "loaded"
-        playSound("start"); // Play start sound
+        // playSound("start"); // Play start sound
       }, 2000);
     };
 

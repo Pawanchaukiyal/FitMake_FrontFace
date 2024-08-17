@@ -14,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+      <div className='back__bg'>
+      <App/>
+      </div>
         <ToastContainer />
       </BrowserRouter>
     </Provider>

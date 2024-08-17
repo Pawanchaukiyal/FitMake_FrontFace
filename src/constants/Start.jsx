@@ -20,7 +20,7 @@ const Start = () => {
       setTimeout(() => {
         setData(location.state?.data || []);
         setLoading(false);
-        playSound("start"); // Play start sound when data is first loaded
+        // playSound("start"); // Play start sound when data is first loaded
         setInitialLoad(false); // Set initial load to false after the first data load
       }, 2000);
     };

@@ -6,7 +6,6 @@ import { ScrollTop } from "./components/scrolltop/ScrollTop";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import Logout from "./components/login/Logout";
-
 import Start from "./constants/Start";
 
 import Common2 from "./section/common/CommonPick"; // Ensure this is imported
@@ -25,7 +24,7 @@ import NoPage from "./pages/NoPage";
 
 const App = () => {
   return (
-    <div className=".back__bg">
+    <div className="">
       <ScrollTop />
       <Routes>
          {/* Catch-all route for undefined pages */}

@@ -10,7 +10,7 @@ const BodyFocusCard = ({ imglink, text }) => {
   return (
     <div 
     onClick={handleClick}
-    className="main_div border-2 rounded-[16px] text-center mt-[20px] flex flex-col md:flex-row justify-between items-center gradient__bg p-4 md:p-2 cursor-pointer">
+    className="main_div border-2 rounded-[16px] text-center mt-[20px] flex flex-col md:flex-row justify-between items-center gradient__bg p-4 md:p-2 m-4 cursor-pointer">
       <div className="w-[150px] h-[130px] overflow-hidden rounded-full mx-auto md:mx-0 bg-slate-500">
         <img src={imglink} alt="user-image" className="w-full h-full object-cover" />
       </div>

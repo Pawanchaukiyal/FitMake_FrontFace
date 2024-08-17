@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 /* Add this to your global CSS or component-specific CSS */
 .flex {
     display: flex;
