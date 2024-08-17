@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../../constants/Button';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
 import { Server } from '../../constants/config';
+import Loader from '../../components/loader/Loader';
 
 const Equip = () => {
   const { equip } = useParams();
@@ -32,7 +33,7 @@ const Equip = () => {
   }, [equip]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   if (error) {

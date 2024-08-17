@@ -24,7 +24,7 @@ import NoPage from "./pages/NoPage";
 
 const App = () => {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <ScrollTop />
       <Routes>
          {/* Catch-all route for undefined pages */}
