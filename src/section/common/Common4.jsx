@@ -33,9 +33,9 @@ const Common4 = () => {
   }, [value]);
 
   if (loading) {
-    return 
+    return (
       <Loader/>
-    ;
+    )
   }
 
   if (error) {
