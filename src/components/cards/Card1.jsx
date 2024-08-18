@@ -68,11 +68,11 @@ const Card1 = ({ imglink, heading, text, value, exerciselevel, description }) =>
           alt={heading}
         />
         <div className="p-4 flex flex-col justify-between">
-          <div className="mb-4">
+          <div className="mb-2">
             <h1 className="text-xl md:text-2xl font-bold text-gray-800">{heading}</h1>
-            <p className="text-gray-600 mt-2 font-medium">{description}</p>
+            <p className="text-gray-600 mt-1 font-medium">{description}</p>
           </div>
-          <div className="mt-4">
+          <div className="mt-1">
             <button
               onClick={handleNavigation}
               className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 focus:outline-none"

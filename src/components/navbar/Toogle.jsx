@@ -1,15 +1,20 @@
-// Toogle.jsx
 import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
-const Toogle = () => {
-  // Initialize darkMode based on the current class on the documentElement
-  const [darkMode, setDarkMode] = useState(
-    document.documentElement.classList.contains('dark')
-  );
+const Toggle = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedMode === 'true' || (!savedMode && prefersDarkMode);
+  });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
   const toggleDarkMode = () => {
@@ -27,4 +32,4 @@ const Toogle = () => {
   );
 };
 
-export default Toogle;
+export default Toggle;
