@@ -23,46 +23,47 @@ function CarouselLg() {
   };
 
   return (
-
-  <>
-  {/* hidden  sm:block */}
-    <div className="max-w-full h-screen w-full m-auto relative group overflow-hidden">
-      {/* <div className="w-full h-full flex items-center justify-center">
-        <img
-          src={slides[currentIndex]}
-          alt={`Slide ${currentIndex}`}
-          className="w-full h-full object-cover"
-        />
-      </div> */}
-
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Carousel Slide */}
       <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className='w-full h-full  bg-center bg-cover duration-500'
-      ></div>
+        style={{ backgroundImage: `url(${slides[currentIndex].url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}
+        className="w-full h-full bg-center bg-cover duration-500 transition-transform"
+      >
+        {/* Text Overlay */}
+        <div className="absolute inset-0 flex items-end justify-center text-center text-white bg-black bg-opacity-20 p-4">
+          <h2 className="text-2xl font-bold mb-6">{slides[currentIndex].text}</h2>
+        </div>
+      </div>
 
       {/* Left Arrow */}
-      <div onClick={prevSlide} className="hidden group-hover:block absolute top-1/2 transform -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div
+        onClick={prevSlide}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
+      >
         <BsChevronCompactLeft size={30} />
       </div>
+
       {/* Right Arrow */}
-      <div onClick={nextSlide} className="hidden group-hover:block absolute top-1/2 transform -translate-y-1/2 right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div
+        onClick={nextSlide}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
+      >
         <BsChevronCompactRight size={30} />
       </div>
-      
-      <div className="flex justify-center py-2 absolute bottom-4 w-full">
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, slideIndex) => (
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className={`text-2xl cursor-pointer mx-1 ${currentIndex === slideIndex ? 'text-white' : 'text-gray-400'}`}
+            className={`text-2xl cursor-pointer ${currentIndex === slideIndex ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
           >
             <RxDotFilled />
           </div>
         ))}
       </div>
     </div>
-
-  </>
   );
 }
 
