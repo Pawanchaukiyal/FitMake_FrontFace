@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
 import Button from '../../constants/Button';
 import { Server } from '../../constants/config';
+import Loader from '../../components/loader/Loader';
 
 const Common4 = () => {
   const { value } = useParams();
@@ -32,7 +33,9 @@ const Common4 = () => {
   }, [value]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return 
+      <Loader/>
+    ;
   }
 
   if (error) {
