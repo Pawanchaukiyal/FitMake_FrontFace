@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const BreakPage = ({ onBreakComplete }) => {
-  const [breakTime, setBreakTime] = useState(5);
+const BreakPage = ({ onSkipBreak }) => {
+  const [breakTime, setBreakTime] = useState(30);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setBreakTime((prevTime) => {
         if (prevTime <= 1) {
           clearInterval(timer);
-          onBreakComplete(); // Notify when break is complete
           return 0;
         }
         return prevTime - 1;
@@ -16,13 +15,25 @@ const BreakPage = ({ onBreakComplete }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [onBreakComplete]);
+  }, []);
+
+  useEffect(() => {
+    if (breakTime === 0) {
+      onSkipBreak(); // Trigger the skip break action when break time is over
+    }
+  }, [breakTime, onSkipBreak]);
 
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="text-center">
         <p className="text-lg font-semibold">Take a 30-second break!</p>
         <p className="text-lg font-semibold mt-4">Break Time: {breakTime} seconds</p>
+        <button
+          onClick={onSkipBreak}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mt-4"
+        >
+          Skip Break
+        </button>
       </div>
     </div>
   );

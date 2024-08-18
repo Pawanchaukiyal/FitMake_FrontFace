@@ -3,23 +3,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import InsideStart from "./InsideStart";
 import Loader from "../components/loader/Loader";
 import BreakPage from "../pages/BreakPage";
-import { playSound } from "../../public/utils.js"
+import { playSound } from "../../public/utils.js";
+
 const Start = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [initialLoad, setInitialLoad] = useState(true); // To track if it's the first data load
-  const [isOnBreak, setIsOnBreak] = useState(false); // State to handle break period
+  const [initialLoad, setInitialLoad] = useState(true);
+  const [isOnBreak, setIsOnBreak] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
       setTimeout(() => {
         setData(location.state?.data || []);
         setLoading(false);
-        // playSound("start"); // Play start sound when data is first loaded
-        setInitialLoad(false); // Set initial load to false after the first data load
+        setInitialLoad(false);
       }, 2000);
     };
 
@@ -28,21 +28,21 @@ const Start = () => {
 
   useEffect(() => {
     if (!loading && !initialLoad) {
-      playSound("whistle"); // Play whistle sound on new exercise, but not on first data load
+      playSound("whistle");
     }
   }, [currentIndex, loading]);
 
   const handleSkip = () => {
     if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setIsOnBreak(true); // Start break period
+      setIsOnBreak(true);
     } else {
-      navigate("/complete"); // Ensure '/complete' matches the route in your router setup
+      navigate("/complete");
     }
   };
 
-  const handleBreakComplete = () => {
-    setIsOnBreak(false); // End break period
+  const handleSkipBreak = () => {
+    setIsOnBreak(false);
   };
 
   if (loading) {
@@ -54,7 +54,11 @@ const Start = () => {
   }
 
   if (isOnBreak) {
-    return <BreakPage onBreakComplete={handleBreakComplete} />;
+    return (
+      <BreakPage 
+        onSkipBreak={handleSkipBreak} 
+      />
+    );
   }
 
   const currentExercise = data[currentIndex];
@@ -65,9 +69,9 @@ const Start = () => {
         img={currentExercise.yogaImage || currentExercise.exerciseImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
-        duration={60} // Duration in seconds
-        onSkip={handleSkip} // Handle skip
-        onBreak={() => setIsOnBreak(true)} // Set break period
+        duration={60}
+        onSkip={handleSkip}
+        onBreak={() => setIsOnBreak(true)}
       />
     </div>
   );

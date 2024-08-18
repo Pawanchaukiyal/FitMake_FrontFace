@@ -38,7 +38,10 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10, onBreak }
           if (prevTime <= 1) {
             clearInterval(timer);
             clearInterval(progressInterval);
-            onBreak(); // Start the break period
+            // Use a timeout to avoid updating state directly during rendering
+            setTimeout(() => {
+              onBreak(); // Start the break period
+            }, 0);
             return 0;
           }
           return prevTime - 1;
@@ -70,8 +73,11 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10, onBreak }
     setTimeLeft(duration);
     setProgress(0);
     setIsPlaying(false);
-    onSkip();
-    playSound("whistle"); // Play skip sound
+    // Use a timeout to avoid updating state directly during rendering
+    setTimeout(() => {
+      onSkip();
+      playSound("whistle"); // Play skip sound
+    }, 0);
   };
 
   if (loading) {
