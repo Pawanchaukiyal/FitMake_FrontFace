@@ -4,7 +4,6 @@ import React from 'react'
 const Footer = () => {
   return (
     
-
 <footer className="relative md:block hidden bg-blueGray-200 pt-8 pb-6 bg-[#212432]">
   <div className="container mx-auto px-4">
     <div className="flex flex-wrap text-left lg:text-left">

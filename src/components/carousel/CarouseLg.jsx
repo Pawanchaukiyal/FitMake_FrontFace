@@ -38,7 +38,7 @@ function CarouselLg() {
       {/* Left Arrow */}
       <div
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2  rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
       >
         <BsChevronCompactLeft size={30} />
       </div>
@@ -46,7 +46,7 @@ function CarouselLg() {
       {/* Right Arrow */}
       <div
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2  rounded-full shadow-lg p-2 cursor-pointer hover:bg-gray-200 transition"
       >
         <BsChevronCompactRight size={30} />
       </div>

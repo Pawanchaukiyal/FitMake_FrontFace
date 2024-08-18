@@ -21,6 +21,8 @@ import CompletePage from "./pages/CompletePage";
 import BreakPage from "./pages/BreakPage";
 import NoPage from "./pages/NoPage";
 
+import './index.css'
+
 
 const App = () => {
   return (

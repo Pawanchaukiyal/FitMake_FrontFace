@@ -13,10 +13,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between px-4 py-3 nav_bg text-white shadow-lg">
+      <nav className="flex items-center justify-between px-4 py-3  shadow-lg">
         <div className="flex items-center">
         <a href="/">
-        <img src={logo} alt="logo.gif" className="w-12 h-10 nav_bg opacity-1" />
+        <img src={logo} alt="logo.gif" className="w-12 h-10  opacity-1" />
         </a>
         </div>
 
@@ -34,10 +34,10 @@ const Navbar = () => {
         {/* Small Screen Navbar */}
         <div className="flex md:hidden items-center w-full justify-between">
           <div className="nav_link_div flex-1 flex justify-center items-center">
-            <Link to="/" className="hover:text-indigo-300 transition-colors duration-300 ml-auto mr-auto ">
+            <Link to="/" className="hover:text-indigo-800 transition-colors duration-300 ml-auto mr-auto ">
               Home
             </Link>
-            <Link to="/explore" className="hover:text-indigo-300 transition-colors duration-300 mr-auto">
+            <Link to="/explore" className="hover:text-indigo-800 transition-colors duration-300 mr-auto">
               Explore
             </Link>
           </div>
