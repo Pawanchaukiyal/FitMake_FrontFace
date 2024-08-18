@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import InsideStart from "./InsideStart";
 import Loader from "../components/loader/Loader";
-import { playSound } from "../../public/utils.js"; // Adjust path as necessary
-
 import BreakPage from "../pages/BreakPage";
-// Adjust path if necessary
-
+import { playSound } from "../../public/utils.js"
 const Start = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,6 +11,7 @@ const Start = () => {
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [initialLoad, setInitialLoad] = useState(true); // To track if it's the first data load
+  const [isOnBreak, setIsOnBreak] = useState(false); // State to handle break period
 
   useEffect(() => {
     const fetchData = () => {
@@ -37,9 +35,14 @@ const Start = () => {
   const handleSkip = () => {
     if (currentIndex + 1 < data.length) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
+      setIsOnBreak(true); // Start break period
     } else {
       navigate("/complete"); // Ensure '/complete' matches the route in your router setup
     }
+  };
+
+  const handleBreakComplete = () => {
+    setIsOnBreak(false); // End break period
   };
 
   if (loading) {
@@ -50,16 +53,21 @@ const Start = () => {
     return <p>No data available</p>;
   }
 
+  if (isOnBreak) {
+    return <BreakPage onBreakComplete={handleBreakComplete} />;
+  }
+
   const currentExercise = data[currentIndex];
 
   return (
-    <div className=" w-full h-screen ">
+    <div className="w-full h-screen">
       <InsideStart
         img={currentExercise.yogaImage || currentExercise.exerciseImage}
         name={currentExercise.name}
         instructions={currentExercise.instructions}
         duration={60} // Duration in seconds
         onSkip={handleSkip} // Handle skip
+        onBreak={() => setIsOnBreak(true)} // Set break period
       />
     </div>
   );

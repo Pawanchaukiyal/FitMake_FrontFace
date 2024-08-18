@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 
-const BreakPage = ({ nextExerciseIndex }) => {
-  const navigate = useNavigate();
-  const [timeLeft, setTimeLeft] = useState(30);
+const BreakPage = ({ onBreakComplete }) => {
+  const [breakTime, setBreakTime] = useState(5);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
+      setBreakTime((prevTime) => {
         if (prevTime <= 1) {
           clearInterval(timer);
-          navigate(`/start/${nextExerciseIndex}`); // Navigate to the next exercise
+          onBreakComplete(); // Notify when break is complete
           return 0;
         }
         return prevTime - 1;
@@ -18,16 +16,14 @@ const BreakPage = ({ nextExerciseIndex }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [navigate, nextExerciseIndex]);
+  }, [onBreakComplete]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="font-bold text-3xl font-mono text-red-500 mb-4">
-        Take a break of 30 seconds...
-      </h1>
-      <p className="text-2xl font-mono text-gray-700">
-        Time Left: {timeLeft} seconds
-      </p>
+    <div className="w-full h-screen flex items-center justify-center">
+      <div className="text-center">
+        <p className="text-lg font-semibold">Take a 30-second break!</p>
+        <p className="text-lg font-semibold mt-4">Break Time: {breakTime} seconds</p>
+      </div>
     </div>
   );
 };

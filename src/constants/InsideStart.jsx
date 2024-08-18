@@ -5,7 +5,7 @@ import pause from "../section/common/pause.svg";
 import Loader from "../components/loader/Loader";
 import { playSound } from "../../public/utils.js";
 
-const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
+const InsideStart = ({ img, instructions, name, onSkip, duration = 10, onBreak }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -38,8 +38,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10 }) => {
           if (prevTime <= 1) {
             clearInterval(timer);
             clearInterval(progressInterval);
-            handleSkipInternal();
-            // playSound('complete'); // Play complete sound
+            onBreak(); // Start the break period
             return 0;
           }
           return prevTime - 1;
