@@ -94,7 +94,7 @@ const InsideStart = ({ img, instructions, name, onSkip, duration = 10, onBreak }
         {name}
       </p>
 
-      <div className="border-2 h-72 border-gray-300 p-8 rounded-lg mb-4 overflow-y-auto box-border inst_div">
+      <div className="border-2 h-72 border-gray-300 p-8 rounded-lg mb-7 overflow-y-auto box-border inst_div">
         <p className="text-lg sm:text-2xl font-mono font-bold">
           {instructions}
         </p>

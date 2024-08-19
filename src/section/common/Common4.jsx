@@ -1,5 +1,3 @@
-// only extract exercise aot
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
@@ -33,9 +31,7 @@ const Common4 = () => {
   }, [value]);
 
   if (loading) {
-    return (
-      <Loader/>
-    )
+    return <Loader />;
   }
 
   if (error) {
@@ -43,19 +39,16 @@ const Common4 = () => {
   }
 
   return (
-<div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
-      {error && <p className="text-red-500">{error}</p>}
+    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
       {data.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {data.map((item, index) => (
             <SmallCard
-            key={index}
-            data={{
-              img:item.exerciseImage,
-              name: item.name,
-              // description:item.description
-              //level: item.level, // You can add any other relevant properties here
-            }}
+              key={index}
+              data={{
+                img: item.exerciseImage,
+                name: item.name,
+              }}
             />
           ))}
         </div>

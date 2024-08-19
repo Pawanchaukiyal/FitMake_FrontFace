@@ -33,7 +33,7 @@ const Equip = () => {
   }, [equip]);
 
   if (loading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   if (error) {
@@ -41,24 +41,21 @@ const Equip = () => {
   }
 
   return (
-<div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
-      {error && <p className="text-red-500">{error}</p>}
+    <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
       {data.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {data.map((item, index) => (
             <SmallCard
-            key={index}
-            data={{
-              img:item.exerciseImage,
-              name: item.name,
-              // description:item.description
-              //level: item.level, // You can add any other relevant properties here
-            }}
+              key={index}
+              data={{
+                img: item.exerciseImage,
+                name: item.name,
+              }}
             />
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-4">No data available for this {value}</p>
+        <p className="text-center text-gray-500 mt-4">No data available for this {equip}</p>
       )}
       <div className="mt-6 w-full flex justify-center">
         <Button data={data} />
@@ -68,3 +65,4 @@ const Equip = () => {
 };
 
 export default Equip;
+
