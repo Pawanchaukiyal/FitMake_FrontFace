@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SmallCard from '../../components/cards/smallcard/SmallCard';
 import { Server } from '../../constants/config';
-import Loader from '../../components/loader/Loader'; // Import the Loader component
+import Loader from '../../components/loader/Loader';
+import Button from '../../constants/Button'; // Import the Button component if it's needed
 
 const Commonaot = () => {
   const { value } = useParams();
   const [combinedData, setCombinedData] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -17,33 +18,54 @@ const Commonaot = () => {
         const response = await axios.get(`${Server}/api/v1/combined/aot/${value}`);
         setCombinedData(response.data.data);
       } catch (error) {
-        console.error('Error fetching combined data:', error);
         setError('Failed to fetch data');
       } finally {
-        setLoading(false); // Stop loading after data is fetched
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [value]);
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+        <Loader />
+        <p className="text-center text-gray-600 mt-4">Data is loading...</p>
+        <p className="text-center text-red-500 mt-2">
+          If it takes time, please refresh the page.
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+        <p className="text-red-500">Error: {error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
-      {error && <p className="text-red-500">{error}</p>}
-      {loading ? (
-        <Loader /> // Show loader while data is being fetched
-      ) : combinedData.length > 0 ? (
-        <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
-          {combinedData.map((item, index) => (
-            <SmallCard 
-              key={index}
-              data={{
-                name: item.name,
-                img: item.yogaImage || item.exerciseImage
-              }}
-            />
-          ))}
-        </div>
+      {combinedData.length > 0 ? (
+        <>
+          <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
+            {combinedData.map((item, index) => (
+              <SmallCard
+                key={index}
+                data={{
+                  name: item.name,
+                  img: item.yogaImage || item.exerciseImage,
+                }}
+              />
+            ))}
+          </div>
+          <div className="mt-6 w-full flex justify-center">
+            <Button data={combinedData} /> {/* Adjust this line if Button should be visible only when data is present */}
+          </div>
+        </>
       ) : (
         <p className="text-center text-gray-500 mt-4">No data available for this {value}</p>
       )}

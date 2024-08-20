@@ -42,9 +42,16 @@ const CommonPick = () => {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
-      {error && <p className="text-red-500">{error}</p>}
       {loading ? (
-        <Loader /> // Show loader while data is being fetched
+        <>
+          <Loader /> {/* Show loader while data is being fetched */}
+          <p className="text-center text-gray-600 mt-4">Data is loading...</p>
+          <p className="text-center text-red-500 mt-2">
+            If it takes time, please refresh the page.
+          </p>
+        </>
+      ) : error ? (
+        <p className="text-red-500">{error}</p>
       ) : combinedData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {combinedData.map((item, index) => (
@@ -53,19 +60,19 @@ const CommonPick = () => {
               data={{
                 img: item.yogaImage || item.exerciseImage,
                 name: item.name,
-                // level: item.level, // Add any other relevant properties here if needed
+                // Add any other relevant properties here if needed
               }}
             />
           ))}
+          <div className="mt-6 w-full flex justify-center">
+            <Button data={combinedData} />
+          </div>
         </div>
       ) : (
         <p className="text-center text-gray-500 mt-4">
           No data available for this {value}
         </p>
       )}
-      <div className="mt-6 w-full flex justify-center">
-        <Button data={combinedData} />
-      </div>
     </div>
   );
 };

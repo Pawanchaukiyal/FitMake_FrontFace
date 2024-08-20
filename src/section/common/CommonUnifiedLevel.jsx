@@ -43,9 +43,16 @@ const CommonUnifiedLevel = () => {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
-      {error && <p className="text-red-500">{error}</p>}
       {loading ? (
-        <Loader /> // Display loader while data is being fetched
+        <>
+          <Loader />
+          <p className="text-center text-gray-600 mt-4">Data is loading...</p>
+          <p className="text-center text-red-500 mt-2">
+            If it takes time, please refresh the page.
+          </p>
+        </>
+      ) : error ? (
+        <p className="text-red-500">{error}</p>
       ) : filteredData.length > 0 ? (
         <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
           {filteredData.map((item, index) => (
@@ -59,15 +66,15 @@ const CommonUnifiedLevel = () => {
               }}
             />
           ))}
+          <div className="mt-6 w-full flex justify-center">
+            <Button data={filteredData} />
+          </div>
         </div>
       ) : (
         <p className="text-center text-gray-500 mt-4">
           No data available for this {yogalevel || exerciselevel}
         </p>
       )}
-      <div className="mt-6 w-full flex justify-center">
-        <Button data={filteredData} />
-      </div>
     </div>
   );
 };

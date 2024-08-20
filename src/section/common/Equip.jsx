@@ -1,5 +1,3 @@
-// only extract exercise aot
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../constants/Button';
@@ -33,36 +31,51 @@ const Equip = () => {
   }, [equip]);
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+        <Loader />
+        <p className="text-center text-gray-600 mt-4">Data is loading...</p>
+        <p className="text-center text-red-500 mt-2">
+          If it takes time, please refresh the page.
+        </p>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-col items-center p-4 md:p-6 lg:p-8">
       {data.length > 0 ? (
-        <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
-          {data.map((item, index) => (
-            <SmallCard
-              key={index}
-              data={{
-                img: item.exerciseImage,
-                name: item.name,
-              }}
-            />
-          ))}
-        </div>
+        <>
+          <div className="flex flex-col sm:gap-3 md:gap-5 w-full">
+            {data.map((item, index) => (
+              <SmallCard
+                key={index}
+                data={{
+                  img: item.exerciseImage,
+                  name: item.name,
+                }}
+              />
+            ))}
+          </div>
+          <div className="mt-6 w-full flex justify-center">
+            <Button data={data} />
+          </div>
+        </>
       ) : (
-        <p className="text-center text-gray-500 mt-4">No data available for this {equip}</p>
+        <p className="text-center text-gray-500 mt-4">
+          No data available for this {equip}
+        </p>
       )}
-      <div className="mt-6 w-full flex justify-center">
-        <Button data={data} />
-      </div>
     </div>
   );
 };
 
 export default Equip;
-
