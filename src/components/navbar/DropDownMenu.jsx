@@ -75,12 +75,6 @@ const OtherMenu = () => {
   return (
     <div className="space-y-3">
       <Toogle />
-      <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 dark:hover:bg-gray-600 rounded-sm">
-        Blog
-      </Link>
-      <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 dark:hover:bg-gray-600 rounded-sm">
-        Report
-      </Link>
       <Link to={'#'} onClick={handleShare} className="block text-sm hover:underline hover:bg-gray-200 dark:hover:bg-gray-600 rounded-sm">
         Share With Friends
       </Link>
@@ -90,6 +84,12 @@ const OtherMenu = () => {
       >
         Feedback
       </a>
+      <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 dark:hover:bg-gray-600 rounded-sm">
+        Blog
+      </Link>
+      <Link to={'#'} onClick={handleClick} className="block text-sm hover:underline hover:bg-gray-200 dark:hover:bg-gray-600 rounded-sm">
+        Report
+      </Link>
     </div>
   );
 }

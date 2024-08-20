@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Toggle = () => {
+  // Set default mode to dark if no preference is saved
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return savedMode === 'true' || (!savedMode && prefersDarkMode);
+    if (savedMode === null) {
+      // Default to dark mode if no saved preference
+      return true;
+    }
+    return savedMode === 'true';
   });
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Apply the theme based on darkMode state
+    document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
